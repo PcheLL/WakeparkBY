@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:descendantFocusability="beforeDescendants"
         android:focusableInTouchMode="true"
         tools:context=".SignIn">
+
         <TextView
             android:id="@+id/textViewWelcome"
             android:layout_width="wrap_content"
@@ -19,41 +21,39 @@
             android:layout_marginTop="30dp"
             android:hint="Welcome"
             android:textColorHint="#010101"
-            android:textSize="35dp"
-            />
+            android:textSize="35dp" />
+
         <TextView
             android:id="@+id/textViewEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/textViewWelcome"
+            android:layout_alignLeft="@+id/editTextEmail"
             android:layout_marginTop="70dp"
             android:hint="Email:"
             android:textColorHint="#010101"
-            android:textSize="18dp"
-            android:layout_below="@id/textViewWelcome"
-            android:layout_alignLeft="@+id/editTextEmail"
-            />
+            android:textSize="18dp" />
 
         <EditText
             android:id="@+id/editTextEmail"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:hint="mail"
             android:layout_below="@id/textViewEmail"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:inputType="textEmailAddress"
             android:layout_marginTop="-10dp"
-            />
+            android:hint="mail"
+            android:inputType="textEmailAddress" />
 
         <TextView
             android:id="@+id/textViewPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/editTextEmail"
+            android:layout_alignLeft="@+id/editTextPassword"
             android:hint="Password:"
             android:textColorHint="#010101"
             android:textSize="18dp"
-            android:layout_below="@id/editTextEmail"
-            android:layout_alignLeft="@+id/editTextPassword"
 
             />
 
@@ -61,13 +61,12 @@
             android:id="@+id/editTextPassword"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:hint="*************"
             android:layout_below="@id/textViewPassword"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:layout_marginTop="-10dp"
-            android:inputType="textPassword"
-            />
+            android:hint="*************"
+            android:inputType="textPassword" />
 
         <TextView
             android:id="@+id/textViewNewPassword"
@@ -78,20 +77,19 @@
             android:clickable="true"
             android:hint="Forgot password ?"
             android:textColorHint="#0000FF"
-            android:textSize="10dp"
-            />
+            android:textSize="10dp" />
+
         <Button
             android:id="@+id/buttonEnter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Enter"
-            android:textColorHint="#010101"
-            android:textSize="16dp"
             android:layout_below="@id/textViewNewPassword"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:layout_marginTop="20dp"
-            />
+            android:hint="Enter"
+            android:textColorHint="#010101"
+            android:textSize="16dp" />
 
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

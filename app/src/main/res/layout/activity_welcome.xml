@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="#ffffff"
     tools:context=".Welcome">
 
     <RelativeLayout
@@ -16,40 +16,37 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/wakepark_logo_new3"
-            />
+            android:src="@drawable/wakepark_logo_new3" />
 
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:background="@android:color/transparent"
+            android:orientation="vertical"
 
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:background="@android:color/transparent"
-    android:orientation="vertical"
-    android:layout_centerHorizontal="true"
-    android:layout_centerVertical="true"
+            >
 
-    >
-    <Button
-        android:id="@+id/buttonCreateAcc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Create account"
-        android:textColorHint="#010101"
-        android:textSize="16dp"
-        android:layout_marginTop="20dp"
-        />
+            <Button
+                android:id="@+id/buttonCreateAcc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:hint="Create account"
+                android:textColorHint="#010101"
+                android:textSize="16dp" />
 
-    <Button
-        android:id="@+id/buttonSignIn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/buttonCreateAcc"
-        android:hint="Sign In"
-        android:textColorHint="#010101"
-        android:textSize="16dp"
-        />
-</LinearLayout>
+            <Button
+                android:id="@+id/buttonSignIn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/buttonCreateAcc"
+                android:hint="Sign In"
+                android:textColorHint="#010101"
+                android:textSize="16dp" />
+        </LinearLayout>
 
     </RelativeLayout>
 

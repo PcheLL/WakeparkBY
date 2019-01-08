@@ -19,6 +19,8 @@
         <activity android:name=".CreateAccount"></activity>
         <activity android:name=".MainMenu"></activity>
         <activity android:name=".SignIn"></activity>
+        <activity android:name=".LocationSelection"></activity>
+        <activity android:name=".TheСalendar"></activity>
     </application>
 
 </manifest>
