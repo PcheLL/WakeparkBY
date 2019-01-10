@@ -1,26 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <CalendarView
+        <TextView
+            android:id="@+id/textViewChooseDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:hint="Choose a date"
+            android:textColorHint="#010101"
+            android:textSize="35dp" />
 
-            android:id="@+id/calendarView1"
+        <DatePicker
+            android:id="@+id/datePicker"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:onClick="onClick"
-            android:weekNumberColor="#0000ff"
-            android:weekSeparatorLineColor="#00ff00"
+            android:layout_below="@+id/textViewChooseDate"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:theme="@style/CalenderViewCustom"
-            android:dateTextAppearance="@style/CalenderViewDateCustomText"
-            android:weekDayTextAppearance="@style/CalenderViewWeekCustomText"
-            />
+            android:layout_marginTop="10dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/buttonSelectDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginBottom="30dp"
+                    android:hint="Select"
+                    android:textColorHint="#010101"
+                    android:textSize="15dp"
+
+                    />
+            </RelativeLayout>
+
+        </DatePicker>
 
     </RelativeLayout>
 

@@ -14,8 +14,7 @@
             android:layout_height="wrap_content"
             android:hint="Choose place"
             android:textColorHint="#010101"
-            android:textSize="16dp"
-            />
+            android:textSize="16dp" />
     </RelativeLayout>
 
 

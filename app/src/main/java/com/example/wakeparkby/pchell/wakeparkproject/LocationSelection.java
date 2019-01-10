@@ -8,7 +8,8 @@ import android.widget.Button;
 
 
 public class LocationSelection extends AppCompatActivity implements View.OnClickListener {
-private Button buttDrozdy;
+    private Button buttDrozdy;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location_selection);
@@ -19,7 +20,7 @@ private Button buttDrozdy;
 
     @Override
     public void onClick(View v) {
-        Intent intent_TheCalendar = new Intent(this,   TheСalendar.class);
+        Intent intent_TheCalendar = new Intent(this, TheСalendar.class);
         startActivity(intent_TheCalendar);
     }
 }

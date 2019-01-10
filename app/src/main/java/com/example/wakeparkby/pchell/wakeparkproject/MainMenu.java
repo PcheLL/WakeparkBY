@@ -7,12 +7,13 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainMenu extends AppCompatActivity implements View.OnClickListener {
-private Button buttChoosePl;
+    private Button buttChoosePl;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
-        buttChoosePl=(Button) findViewById(R.id.buttonChoosePl);
+        buttChoosePl = (Button) findViewById(R.id.buttonChoosePl);
         buttChoosePl.setOnClickListener((View.OnClickListener) this);
     }
 
