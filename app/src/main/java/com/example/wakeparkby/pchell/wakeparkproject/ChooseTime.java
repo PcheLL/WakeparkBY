@@ -34,7 +34,7 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
         setContentView(R.layout.activity_choose_time);
         timePicker = (TimePicker) findViewById(R.id.timePicker);
         timePicker.setIs24HourView(true);
-        textViewData = (TextView) findViewById(R.id.textViewData);
+        textViewData = (TextView) findViewById(R.id.textViewStaticDate);
         textViewData.setText("(" + day + "." + month + "." + year + ")");
         buttTime1 = (Button) findViewById(R.id.buttonTime1);
         buttTime1.setOnClickListener((View.OnClickListener) this);
@@ -109,7 +109,8 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
                     }
                 }
                 else {
-
+                    BookingDescription bookingDescription = new BookingDescription();
+                    bookingDescription.infoTime(hour1,min1,hour2,min2);
                     Intent intent_BookingDescription = new Intent(this, BookingDescription.class);
                     startActivity(intent_BookingDescription);
                 }

@@ -36,6 +36,8 @@ public class TheСalendar extends AppCompatActivity implements View.OnClickListe
         int mYear = datePicker.getYear();
         ChooseTime chooseTime = new ChooseTime();
         chooseTime.SetData(mDay, mMonth, mYear);
+        BookingDescription bookingDescription = new BookingDescription();
+        bookingDescription.infoDate(mDay, mMonth, mYear);
         Intent intent_chooseData = new Intent(this, ChooseTime.class);
         startActivity(intent_chooseData);
     }

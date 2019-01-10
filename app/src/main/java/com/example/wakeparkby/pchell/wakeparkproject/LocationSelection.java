@@ -29,12 +29,11 @@ public class LocationSelection extends AppCompatActivity implements View.OnClick
         switch (v.getId()) {
             case R.id.buttonDrozdy:
                 locationName = "Водохранилище Дрозды";
-
                 bookingDescription.infoLocation(locationName);
                 startActivity(intent_TheCalendar);
                 break;
             case R.id.buttonLogoysk:
-                locationName = "Водохранилище Дрозды";
+                locationName = "ГСОК ЛОГОЙСК";
                 bookingDescription.infoLocation(locationName);
                 startActivity(intent_TheCalendar);
                 break;
