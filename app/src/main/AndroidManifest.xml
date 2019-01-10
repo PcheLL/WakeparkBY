@@ -22,6 +22,7 @@
         <activity android:name=".LocationSelection"></activity>
         <activity android:name=".TheСalendar"></activity>
         <activity android:name=".ChooseTime"></activity>
+        <activity android:name=".BookingDescription"></activity>
     </application>
 
 </manifest>

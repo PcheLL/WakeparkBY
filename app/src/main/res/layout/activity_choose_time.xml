@@ -30,6 +30,7 @@
 
 
         <LinearLayout
+            android:id="@+id/ll"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/textViewSelectTime"
@@ -44,5 +45,74 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"></TimePicker>
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_alignBaseline="@+id/ll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="30dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/textViewTime1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint=" C: --:--"
+                    android:textColorHint="#010101"
+                     />
+
+                <Button
+                    android:id="@+id/buttonTime1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="Select"
+                    android:textColorHint="#010101"
+                    android:textSize="16dp" />
+            </LinearLayout>
+
+
+            <LinearLayout
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/textViewTime2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="До:--:--"
+                    android:textColorHint="#010101" />
+
+                <Button
+                    android:id="@+id/buttonTime2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="Select"
+                    android:textColorHint="#010101"
+                    android:textSize="16dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/buttonSelectTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="30dp"
+            android:hint="Continue"
+            android:textColorHint="#010101"
+            android:textSize="15dp"
+
+            />
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
