@@ -118,7 +118,7 @@ public class BookingDescription extends AppCompatActivity implements View.OnClic
                 imageViewReserved.setVisibility(View.VISIBLE);
                 buttBooking.setVisibility(View.INVISIBLE);
                 buttBackToMenu.setVisibility(View.VISIBLE);
-                myRefReserved.child(infoData).push().setValue(infoTime + name);
+                myRefReserved.child(infoLocationName).child(infoData).push().setValue(infoTime + " " +"Name: " + name);
                 break;
             case R.id.buttonBackToMenu:
                 startActivity(intent_Main_menu);
