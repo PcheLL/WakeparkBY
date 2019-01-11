@@ -60,6 +60,37 @@
 
         </LinearLayout>
 
+        <Button
+            android:id="@+id/buttonBooking"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="30dp"
+            android:hint="Continue"
+            android:textColorHint="#010101"
+            android:textSize="15dp" />
+        <Button
+            android:id="@+id/buttonBackToMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="30dp"
+            android:hint="Back to menu"
+            android:textColorHint="#010101"
+            android:textSize="15dp"
+            android:visibility="invisible"/>
 
+        <ImageView
+            android:id="@+id/imageViewReserved"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/reserved1"
+            android:visibility="invisible" />
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
