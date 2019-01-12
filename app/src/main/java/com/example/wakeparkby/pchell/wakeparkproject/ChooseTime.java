@@ -4,22 +4,38 @@ import android.annotation.TargetApi;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class ChooseTime extends AppCompatActivity implements View.OnClickListener {
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private DatabaseReference myRefListTime = database.getReference("ListTime");
     private TimePicker timePicker;
     private TextView textViewData;
-    private Button buttTime1;
-    private Button buttTime2;
+    private Button buttLong;
+    private Button buttShort;
     private Button buttSelectTime;
     private TextView textViewTime1;
     private TextView textViewTime2;
+    private ListView listViewTime;
     private static int day;
     private static int month;
     private static int year;
@@ -27,24 +43,26 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
     private static int min1;
     private static int hour2;
     private static int min2;
+    private static int fl = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_time);
-        timePicker = (TimePicker) findViewById(R.id.timePicker);
+        /*timePicker = (TimePicker) findViewById(R.id.timePicker);
         timePicker.setIs24HourView(true);
         textViewData = (TextView) findViewById(R.id.textViewStaticDate);
-        textViewData.setText("(" + day + "." + month + "." + year + ")");
-        buttTime1 = (Button) findViewById(R.id.buttonTime1);
-        buttTime1.setOnClickListener((View.OnClickListener) this);
-        buttTime2 = (Button) findViewById(R.id.buttonTime2);
-        buttTime2.setOnClickListener((View.OnClickListener) this);
-        buttSelectTime = (Button) findViewById(R.id.buttonSelectTime);
+        textViewData.setText("(" + day + "." + month + "." + year + ")");*/
+        buttLong = (Button) findViewById(R.id.buttonLong);
+        buttLong.setOnClickListener((View.OnClickListener) this);
+        buttShort = (Button) findViewById(R.id.buttonShort);
+        buttShort.setOnClickListener((View.OnClickListener) this);
+        /*buttSelectTime = (Button) findViewById(R.id.buttonSelectTime);
         buttSelectTime.setOnClickListener((View.OnClickListener) this);
         textViewTime1 = (TextView) findViewById(R.id.textViewTime1);
-        textViewTime2 = (TextView) findViewById(R.id.textViewTime2);
-
+        textViewTime2 = (TextView) findViewById(R.id.textViewTime2);*/
+        listViewTime = (ListView) findViewById(R.id.listViewTime);
+        chatListRefresh();
     }
 
     protected void SetData(int mDay, int mMonth, int mYear) {
@@ -53,12 +71,32 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
         year = mYear;
     }
 
+    private void chatListRefresh() {
+        //-----Отображение в базе данных сообщений
+        myRefListTime.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot chatDS) {
+                final List<String> chatList = new ArrayList<String>();
+                for (DataSnapshot battle : chatDS.getChildren())
+                    chatList.add((String) battle.getValue());
+                ArrayAdapter<String> chatAdapter = new ArrayAdapter<>(ChooseTime.this,
+                        android.R.layout.simple_list_item_1,
+                        chatList.toArray(new String[chatList.size()]));
+                listViewTime.setAdapter(chatAdapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+    }
+
 
     @Override
     public void onClick(View v) {
         // Intent intent_MyTasks = new Intent(this, MyTasks.class);
         switch (v.getId()) {
-            case R.id.buttonTime1:
+            case R.id.buttonLong:
                 int currentApiVersion1 = android.os.Build.VERSION.SDK_INT;
                 if (currentApiVersion1 > android.os.Build.VERSION_CODES.LOLLIPOP_MR1) {
                     hour1 = timePicker.getHour();
@@ -73,7 +111,7 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
                     textViewTime1.setText(hour1 + ":" + min1);
                 }
                 break;
-            case R.id.buttonTime2:
+            case R.id.buttonShort:
                 int currentApiVersion2 = android.os.Build.VERSION.SDK_INT;
                 if (currentApiVersion2 > android.os.Build.VERSION_CODES.LOLLIPOP_MR1) {
                     hour2 = timePicker.getHour();
@@ -88,34 +126,48 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
                     textViewTime2.setText(hour2 + ":" + min2);
                 }
                 break;
-            case R.id.buttonSelectTime:
+           /* case R.id.buttonSelectTime:
                 if (hour1 == 0 || hour2 == 0) {
                     Toast.makeText(getApplicationContext(), "Check the entered time", Toast.LENGTH_LONG).show();
-                } else if (hour1 < 9 || hour2 < 9) {
+                    fl = 1;
+                }
+                if (hour1 < 9 || hour2 < 9) {
                     Toast.makeText(getApplicationContext(), "Check the entered time", Toast.LENGTH_LONG).show();
-                } else if (hour1 >= 21 || hour2 >= 21) {
+                    fl = 1;
+                }
+                if (hour1 >= 21 || hour2 >= 21) {
                     Toast.makeText(getApplicationContext(), "Check the entered time", Toast.LENGTH_LONG).show();
-                } else if (hour1 > hour2) {
+                    fl = 1;
+                }
+                if (hour1 > hour2) {
                     Toast.makeText(getApplicationContext(), "Check the entered time", Toast.LENGTH_LONG).show();
-                } else if (min1 != 0 & min1 != 5 & min1 != 10 & min1 != 15 & min1 != 20
+                    fl = 1;
+                }
+                if (min1 != 0 & min1 != 5 & min1 != 10 & min1 != 15 & min1 != 20
                         & min1 != 25 & min1 != 30 & min1 != 35 & min1 != 40 & min1 != 45 & min1 != 50 & min1 != 55) {
                     Toast.makeText(getApplicationContext(), "Check the entered time", Toast.LENGTH_LONG).show();
-                } else if (min2 != 0 & min2 != 5 & min2 != 10 & min2 != 15 & min2 != 20
+                    fl = 1;
+                }
+                if (min2 != 0 & min2 != 5 & min2 != 10 & min2 != 15 & min2 != 20
                         & min2 != 25 & min2 != 30 & min2 != 35 & min2 != 40 & min2 != 45 & min2 != 50 & min2 != 55) {
                     Toast.makeText(getApplicationContext(), "Check the entered time", Toast.LENGTH_LONG).show();
-                } else if (hour1 == hour2) {
+                    fl = 1;
+                }
+                if (hour1 == hour2) {
                     if (min1 == min2) {
                         Toast.makeText(getApplicationContext(), "Check the entered time", Toast.LENGTH_LONG).show();
+                        fl = 1;
                     }
-                }
-                else {
+                if (fl == 0){
                     BookingDescription bookingDescription = new BookingDescription();
-                    bookingDescription.infoTime(hour1,min1,hour2,min2);
+                    bookingDescription.infoTime(hour1, min1, hour2, min2);
                     Intent intent_BookingDescription = new Intent(this, BookingDescription.class);
                     startActivity(intent_BookingDescription);
+                    }
                 }
-                //        startActivity(intent_MyTasks);
-                break;
+            //        startActivity(intent_MyTasks);
+            break;
+        }*/
         }
     }
 }
