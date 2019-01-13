@@ -2,15 +2,19 @@ package com.example.wakeparkby.pchell.wakeparkproject;
 
 import android.annotation.TargetApi;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.ColorRes;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -22,12 +26,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 
 public class ChooseTime extends AppCompatActivity implements View.OnClickListener {
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference myRefListTime = database.getReference("ListTime");
+    private DatabaseReference myRefListProcReserv = database.getReference("ProcessOfReservation");
     private TimePicker timePicker;
     private TextView textViewData;
     private Button buttLong;
@@ -43,26 +49,35 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
     private static int min1;
     private static int hour2;
     private static int min2;
-    private static int fl = 0;
+    private static ArrayList idList = new ArrayList();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_time);
-        /*timePicker = (TimePicker) findViewById(R.id.timePicker);
-        timePicker.setIs24HourView(true);
-        textViewData = (TextView) findViewById(R.id.textViewStaticDate);
-        textViewData.setText("(" + day + "." + month + "." + year + ")");*/
         buttLong = (Button) findViewById(R.id.buttonLong);
         buttLong.setOnClickListener((View.OnClickListener) this);
         buttShort = (Button) findViewById(R.id.buttonShort);
         buttShort.setOnClickListener((View.OnClickListener) this);
-        /*buttSelectTime = (Button) findViewById(R.id.buttonSelectTime);
-        buttSelectTime.setOnClickListener((View.OnClickListener) this);
-        textViewTime1 = (TextView) findViewById(R.id.textViewTime1);
-        textViewTime2 = (TextView) findViewById(R.id.textViewTime2);*/
         listViewTime = (ListView) findViewById(R.id.listViewTime);
         chatListRefresh();
+
+        listViewTime.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                if (idList.contains(id)) {
+                    // view.setBackgroundColor(Color.WHITE);
+                } else {
+                    // view.setBackgroundColor(Color.RED);
+                    idList.add(id);
+                    String timeAtPosition = (String) adapterView.getItemAtPosition(position);
+                    myRefListProcReserv.child(day + "-" + month + "-" + year).push().setValue(timeAtPosition);
+                }
+            }
+
+        });
     }
 
     protected void SetData(int mDay, int mMonth, int mYear) {
@@ -76,14 +91,55 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
         myRefListTime.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot chatDS) {
-                final List<String> chatList = new ArrayList<String>();
+                final List<String> timeList = new ArrayList<String>();
                 for (DataSnapshot battle : chatDS.getChildren())
-                    chatList.add((String) battle.getValue());
-                ArrayAdapter<String> chatAdapter = new ArrayAdapter<>(ChooseTime.this,
+                    timeList.add((String) battle.getValue());
+                ArrayAdapter<String> timeAdapter = new ArrayAdapter<>(ChooseTime.this,
                         android.R.layout.simple_list_item_1,
-                        chatList.toArray(new String[chatList.size()]));
-                listViewTime.setAdapter(chatAdapter);
+                        timeList.toArray(new String[timeList.size()]));
+                listViewTime.setAdapter(timeAdapter);
+                TimeListRefresh();
             }
+
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+    }
+
+    private void TimeListRefresh() {
+        myRefListProcReserv.child(day + "-" + month + "-" + year).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot chatDS) {
+                final List<String> ProcReservList = new ArrayList<String>();
+                for (DataSnapshot battle : chatDS.getChildren())
+                    ProcReservList.add((String) battle.getValue());
+                ArrayAdapter<String> ProcReservTimeAdapter = new ArrayAdapter<>(ChooseTime.this,
+                        android.R.layout.simple_list_item_1,
+                        ProcReservList.toArray(new String[ProcReservList.size()]));
+                ///////////////////////
+                for (int i = 0; i < listViewTime.getCount(); i++) {
+                    String et = String.valueOf(listViewTime.getItemAtPosition(i));
+                    System.out.print("");
+                    for (int k = 0; k < ProcReservList.size(); k++) {
+                        String p = ProcReservList.get(k);
+
+                        if (et.equals(p)) {
+                            listViewTime.getChildAt(i).setBackgroundColor(Color.RED);
+                        }
+                        //else {
+                         //   listViewTime.getChildAt(i).setBackgroundColor(Color.WHITE);
+                      //  }
+                    }
+                }
+
+                //////////////////////
+                // listViewTime.setAdapter(timeAdapter);
+
+
+            }
+
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -126,48 +182,7 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
                     textViewTime2.setText(hour2 + ":" + min2);
                 }
                 break;
-           /* case R.id.buttonSelectTime:
-                if (hour1 == 0 || hour2 == 0) {
-                    Toast.makeText(getApplicationContext(), "Check the entered time", Toast.LENGTH_LONG).show();
-                    fl = 1;
-                }
-                if (hour1 < 9 || hour2 < 9) {
-                    Toast.makeText(getApplicationContext(), "Check the entered time", Toast.LENGTH_LONG).show();
-                    fl = 1;
-                }
-                if (hour1 >= 21 || hour2 >= 21) {
-                    Toast.makeText(getApplicationContext(), "Check the entered time", Toast.LENGTH_LONG).show();
-                    fl = 1;
-                }
-                if (hour1 > hour2) {
-                    Toast.makeText(getApplicationContext(), "Check the entered time", Toast.LENGTH_LONG).show();
-                    fl = 1;
-                }
-                if (min1 != 0 & min1 != 5 & min1 != 10 & min1 != 15 & min1 != 20
-                        & min1 != 25 & min1 != 30 & min1 != 35 & min1 != 40 & min1 != 45 & min1 != 50 & min1 != 55) {
-                    Toast.makeText(getApplicationContext(), "Check the entered time", Toast.LENGTH_LONG).show();
-                    fl = 1;
-                }
-                if (min2 != 0 & min2 != 5 & min2 != 10 & min2 != 15 & min2 != 20
-                        & min2 != 25 & min2 != 30 & min2 != 35 & min2 != 40 & min2 != 45 & min2 != 50 & min2 != 55) {
-                    Toast.makeText(getApplicationContext(), "Check the entered time", Toast.LENGTH_LONG).show();
-                    fl = 1;
-                }
-                if (hour1 == hour2) {
-                    if (min1 == min2) {
-                        Toast.makeText(getApplicationContext(), "Check the entered time", Toast.LENGTH_LONG).show();
-                        fl = 1;
-                    }
-                if (fl == 0){
-                    BookingDescription bookingDescription = new BookingDescription();
-                    bookingDescription.infoTime(hour1, min1, hour2, min2);
-                    Intent intent_BookingDescription = new Intent(this, BookingDescription.class);
-                    startActivity(intent_BookingDescription);
-                    }
-                }
-            //        startActivity(intent_MyTasks);
-            break;
-        }*/
+
         }
     }
 }
