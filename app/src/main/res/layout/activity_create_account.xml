@@ -30,7 +30,7 @@
             android:layout_below="@id/textViewCreateAccount"
             android:layout_alignLeft="@+id/editTextEmail"
             android:layout_marginTop="70dp"
-            android:hint="Email:"
+            android:hint="Telephone number:"
             android:textColorHint="#010101"
             android:textSize="18dp" />
 
@@ -42,7 +42,7 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:layout_marginTop="-10dp"
-            android:hint="mail"
+            android:hint="+375..."
             android:inputType="textEmailAddress"
 
             />
