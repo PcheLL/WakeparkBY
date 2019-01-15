@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
-            android:hint="Select time"
+            android:hint="Выберите время"
             android:textColorHint="#010101"
             android:textSize="35dp" />
 
@@ -32,14 +32,14 @@
                 android:id="@+id/buttonLong"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Long"
+                android:hint="1"
                 android:textSize="16dp"
                 />
             <Button
                 android:id="@+id/buttonShort"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Short"
+                android:hint="2"
                 android:textSize="16dp"
                 />
         </LinearLayout>
@@ -64,7 +64,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:hint="Enter"
+                android:hint="Продолжить"
                 android:textSize="16dp"
                 android:layout_gravity="right"
                 android:layout_marginRight="20dp"/>

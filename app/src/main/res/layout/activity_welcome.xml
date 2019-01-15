@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
+    android:background="#000000"
     tools:context=".Welcome">
 
     <RelativeLayout
@@ -16,10 +16,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/wakepark_logo_new3" />
+            android:layout_marginTop="-80dp"
+            android:scaleType="fitStart"
+            android:src="@drawable/logo_wakeparkby" />
 
 
         <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
@@ -31,9 +34,10 @@
                 android:id="@+id/buttonCreateAcc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:hint="Create account"
-                android:textColorHint="#010101"
+                android:layout_marginTop="50dp"
+                android:background="@drawable/button_welcome"
+                android:hint="Регистрация"
+                android:textColorHint="#ffffff"
                 android:textSize="16dp" />
 
             <Button
@@ -41,8 +45,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/buttonCreateAcc"
-                android:hint="Sign In"
-                android:textColorHint="#010101"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/button_welcome"
+                android:hint="Войти"
+                android:textColorHint="#ffffff"
                 android:textSize="16dp" />
         </LinearLayout>
 

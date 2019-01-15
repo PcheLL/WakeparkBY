@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
-            android:hint="Welcome"
+            android:hint="Авторизация"
             android:textColorHint="#010101"
             android:textSize="35dp" />
 
@@ -30,7 +30,7 @@
             android:layout_below="@id/textViewWelcome"
             android:layout_alignLeft="@+id/editTextEmail"
             android:layout_marginTop="70dp"
-            android:hint="Email:"
+            android:hint="Номер телефона:"
             android:textColorHint="#010101"
             android:textSize="18dp" />
 
@@ -42,7 +42,7 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:layout_marginTop="-10dp"
-            android:hint="mail"
+            android:hint="+375(**)***-**-**"
             android:inputType="textEmailAddress" />
 
         <TextView
@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/editTextEmail"
             android:layout_alignLeft="@+id/editTextPassword"
-            android:hint="Password:"
+            android:hint="Пароль:"
             android:textColorHint="#010101"
             android:textSize="18dp"
 
@@ -65,7 +65,7 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:layout_marginTop="-10dp"
-            android:hint="*************"
+            android:hint="**********"
             android:inputType="textPassword" />
 
         <TextView
@@ -75,7 +75,7 @@
             android:layout_below="@id/editTextPassword"
             android:layout_alignLeft="@+id/editTextPassword"
             android:clickable="true"
-            android:hint="Forgot password ?"
+            android:hint="Забыли пароль ?"
             android:textColorHint="#0000FF"
             android:textSize="10dp" />
 
@@ -87,7 +87,7 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:layout_marginTop="20dp"
-            android:hint="Enter"
+            android:hint="Войти"
             android:textColorHint="#010101"
             android:textSize="16dp" />
 

@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
-            android:hint="Select location"
+            android:hint="Выберите место"
             android:textColorHint="#010101"
             android:textSize="35dp" />
 

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textViewSeasonTickets"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:hint="Выдать абонемент"
+            android:textColorHint="#010101"
+            android:textSize="35dp" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textViewSeasonTickets"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp">
+            <TextView
+                android:id="@+id/textViewNameST"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignLeft="@+id/editTextNameST"
+                android:layout_marginTop="80dp"
+                android:hint="Имя клиента:"
+                android:textColorHint="#010101"
+                android:textSize="18dp" />
+
+            <EditText
+                android:id="@+id/editTextNameST"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewNameST"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="-10dp"
+                android:hint="Антошин Игорь Викторович"
+                android:inputType="textEmailAddress"
+
+                />
+
+            <TextView
+                android:id="@+id/textViewTimeST"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editTextNameST"
+                android:layout_alignLeft="@+id/textViewNameST"
+                android:hint="Время (минут):"
+                android:textColorHint="#010101"
+                android:textSize="18dp"
+
+                />
+
+            <EditText
+                android:id="@+id/editTextTimeST"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewTimeST"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="-10dp"
+                android:hint="120" />
+
+
+
+            <Button
+                android:id="@+id/buttonSaveST"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editTextTimeST"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="20dp"
+                android:hint="Выдать"
+                android:textColorHint="#010101"
+                android:textSize="16dp" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

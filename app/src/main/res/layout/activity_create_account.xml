@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
-            android:hint="Create account"
+            android:hint="Регистрация"
             android:textColorHint="#010101"
             android:textSize="35dp" />
 
@@ -29,8 +29,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/textViewCreateAccount"
             android:layout_alignLeft="@+id/editTextEmail"
-            android:layout_marginTop="70dp"
-            android:hint="Telephone number:"
+            android:layout_marginTop="80dp"
+            android:hint="Номер телефона:"
             android:textColorHint="#010101"
             android:textSize="18dp" />
 
@@ -42,7 +42,7 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:layout_marginTop="-10dp"
-            android:hint="+375..."
+            android:hint="+375(**)***-**-**"
             android:inputType="textEmailAddress"
 
             />
@@ -54,7 +54,7 @@
 
             android:layout_below="@id/editTextEmail"
             android:layout_alignLeft="@+id/editTextName"
-            android:hint="First &amp; last name:"
+            android:hint="ФИО:"
             android:textColorHint="#010101"
             android:textSize="18dp"
 
@@ -68,7 +68,7 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:layout_marginTop="-10dp"
-            android:hint="Sergey Ivanov" />
+            android:hint="Антошин Игорь Викторович" />
 
         <TextView
             android:id="@+id/textViewPassword"
@@ -76,7 +76,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/editTextName"
             android:layout_alignLeft="@+id/editTextPassword"
-            android:hint="Password:"
+            android:hint="Пароль:"
             android:textColorHint="#010101"
             android:textSize="18dp"
 
@@ -90,7 +90,7 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:layout_marginTop="-10dp"
-            android:hint="*************"
+            android:hint="**********"
             android:inputType="textPassword" />
 
         <Button
@@ -101,7 +101,7 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:layout_marginTop="20dp"
-            android:hint="Save"
+            android:hint="Готово"
             android:textColorHint="#010101"
             android:textSize="16dp" />
 
