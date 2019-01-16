@@ -4,7 +4,8 @@
     android:layout_height="match_parent">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#000000">
 
         <TextView
             android:id="@+id/textViewSeasonTickets"
@@ -13,7 +14,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
             android:hint="Выдать абонемент"
-            android:textColorHint="#010101"
+            android:textColorHint="#ffff00"
             android:textSize="35dp" />
 
         <RelativeLayout
@@ -27,11 +28,10 @@
                 android:id="@+id/textViewNameST"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_alignLeft="@+id/editTextNameST"
                 android:layout_marginTop="80dp"
                 android:hint="Имя клиента:"
-                android:textColorHint="#010101"
+                android:textColorHint="#ffffff"
                 android:textSize="18dp" />
 
             <EditText
@@ -41,9 +41,9 @@
                 android:layout_below="@id/textViewNameST"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                android:layout_marginTop="-10dp"
                 android:hint="Антошин Игорь Викторович"
                 android:inputType="textEmailAddress"
+                android:background="#ffffff"
 
                 />
 
@@ -54,7 +54,7 @@
                 android:layout_below="@id/editTextNameST"
                 android:layout_alignLeft="@+id/textViewNameST"
                 android:hint="Время (минут):"
-                android:textColorHint="#010101"
+                android:textColorHint="#ffffff"
                 android:textSize="18dp"
 
                 />
@@ -66,7 +66,7 @@
                 android:layout_below="@id/textViewTimeST"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                android:layout_marginTop="-10dp"
+                android:background="#ffffff"
                 android:hint="120" />
 
 
@@ -80,8 +80,9 @@
                 android:layout_centerVertical="true"
                 android:layout_marginTop="20dp"
                 android:hint="Выдать"
-                android:textColorHint="#010101"
-                android:textSize="16dp" />
+                android:textColorHint="#ffffff"
+                android:textSize="16dp"
+                android:background="@drawable/button_welcome"/>
         </RelativeLayout>
 
     </RelativeLayout>

@@ -6,7 +6,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#000000">
 
         <TextView
             android:id="@+id/textViewChooseDate"
@@ -15,7 +16,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
             android:hint="Выберите дату"
-            android:textColorHint="#010101"
+            android:textColorHint="#ffff00"
             android:textSize="35dp" />
 
         <DatePicker
@@ -25,7 +26,8 @@
             android:layout_below="@+id/textViewChooseDate"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:dayOfWeekBackground="@color/colorPrimary">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -39,10 +41,10 @@
                     android:layout_alignParentBottom="true"
                     android:layout_marginRight="30dp"
                     android:layout_marginBottom="30dp"
-                    android:hint="Продолжить"
-                    android:textColorHint="#010101"
+                    android:text="Продолжить"
+                    android:textColor="#ffffff"
                     android:textSize="15dp"
-
+                    android:background="@drawable/button_welcome"
                     />
             </RelativeLayout>
 

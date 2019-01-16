@@ -7,7 +7,8 @@
     <RelativeLayout
 
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#000000">
 
         <TextView
             android:id="@+id/textViewSelectTime"
@@ -16,7 +17,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
             android:hint="Выберите время"
-            android:textColorHint="#010101"
+            android:textColorHint="#ffff00"
             android:textSize="35dp" />
 
         <LinearLayout
@@ -32,15 +33,20 @@
                 android:id="@+id/buttonLong"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="1"
+                android:text="1"
                 android:textSize="16dp"
+                android:textColor="#ffffff"
+                android:background="@drawable/button_welcome"
                 />
             <Button
                 android:id="@+id/buttonShort"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="2"
+                android:text="2"
+                android:layout_marginLeft="5dp"
                 android:textSize="16dp"
+                android:textColor="#ffffff"
+                android:background="@drawable/button_welcome"
                 />
         </LinearLayout>
 
@@ -55,8 +61,8 @@
                 android:layout_below="@+id/linearLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1">
-
+                android:layout_weight="1"
+                android:cacheColorHint="#ffffff">
             </ListView>
 
             <Button
@@ -64,10 +70,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:hint="Продолжить"
+                android:text="Продолжить"
                 android:textSize="16dp"
                 android:layout_gravity="right"
-                android:layout_marginRight="20dp"/>
+                android:layout_marginRight="20dp"
+                android:textColor="#ffffff"
+                android:background="@drawable/button_welcome"/>
 
         </LinearLayout>
 

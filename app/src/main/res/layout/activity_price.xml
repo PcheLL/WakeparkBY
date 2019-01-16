@@ -8,7 +8,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#000000">
 
         <TextView
             android:id="@+id/textViewPrice"
@@ -17,7 +18,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
             android:hint="Цены"
-            android:textColorHint="#010101"
+            android:textColorHint="#ffff00"
             android:textSize="35dp" />
 
 
@@ -25,9 +26,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/textViewPrice"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
-            android:orientation="vertical"
-            android:layout_centerHorizontal="true">
+            android:orientation="vertical">
 
             <TableLayout
                 android:id="@+id/tabla_cuerpo"
@@ -35,6 +36,7 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/cell_shape"
                 android:gravity="center_horizontal">
+
                 <TextView
                     android:id="@+id/textView"
                     android:layout_width="match_parent"
@@ -42,9 +44,12 @@
                     android:layout_span="6"
                     android:gravity="center"
                     android:text="Дети"
+                    android:textColor="#ffffff"
                     android:textSize="18dp"
                     android:textStyle="bold"
-                    android:typeface="serif"></TextView>
+                    android:typeface="serif">
+                </TextView>
+
                 <TableRow
                     android:id="@+id/tableRow1"
                     android:layout_width="match_parent"
@@ -56,7 +61,8 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/cell_shape"
                         android:padding="5dp"
-                        android:text=""></TextView>
+                        android:text="">
+                    </TextView>
 
                     <TextView
                         android:id="@+id/textView2"
@@ -65,7 +71,9 @@
                         android:background="@drawable/cell_shape"
                         android:padding="5dp"
                         android:text="Сет"
-                        android:textAlignment="center"></TextView>
+                        android:textAlignment="center"
+                        android:textColor="#ffffff">
+                    </TextView>
 
                     <TextView
                         android:id="@+id/textView3"
@@ -74,7 +82,9 @@
                         android:background="@drawable/cell_shape"
                         android:padding="5dp"
                         android:text="Дети до 9 лет"
-                        android:textAlignment="center">></TextView>
+                        android:textAlignment="center"
+                        android:textColor="#ffffff">
+                    </TextView>
 
                     <TextView
                         android:id="@+id/textView4"
@@ -83,7 +93,9 @@
                         android:background="@drawable/cell_shape"
                         android:padding="5dp"
                         android:text="Дети до 16 лет"
-                        android:textAlignment="center">></TextView>
+                        android:textAlignment="center"
+                        android:textColor="#ffffff">
+                    </TextView>
 
                 </TableRow>
 
@@ -98,7 +110,9 @@
                         android:layout_height="wrap_content"
                         android:padding="5dp"
                         android:text="Будние"
-                        android:textAlignment="center">></TextView>
+                        android:textAlignment="center"
+                        android:textColor="#ffffff">
+                    </TextView>
 
                     <TextView
                         android:id="@+id/textView22"
@@ -107,7 +121,9 @@
                         android:background="@drawable/cell_shape"
                         android:padding="5dp"
                         android:text="10 мин"
-                        android:textAlignment="center">></TextView>
+                        android:textAlignment="center"
+                        android:textColor="#ffffff">
+                    </TextView>
 
                     <TextView
                         android:id="@+id/textView33"
@@ -116,7 +132,9 @@
                         android:background="@drawable/cell_shape"
                         android:padding="5dp"
                         android:text="Бесплатно"
-                        android:textAlignment="center">></TextView>
+                        android:textAlignment="center"
+                        android:textColor="#ffffff">
+                    </TextView>
 
                     <TextView
                         android:id="@+id/textView44"
@@ -125,7 +143,9 @@
                         android:background="@drawable/cell_shape"
                         android:padding="5dp"
                         android:text=""
-                        android:textAlignment="center">></TextView>
+                        android:textAlignment="center"
+                        android:textColor="#ffffff">
+                    </TextView>
                 </TableRow>
 
                 <TableRow
@@ -139,7 +159,9 @@
                         android:layout_height="wrap_content"
                         android:padding="5dp"
                         android:text="дни"
-                        android:textAlignment="center">></TextView>
+                        android:textAlignment="center"
+                        android:textColor="#ffffff">
+                    </TextView>
 
                     <TextView
                         android:id="@+id/textView222"
@@ -148,7 +170,9 @@
                         android:background="@drawable/cell_shape"
                         android:padding="5dp"
                         android:text="15 мин"
-                        android:textAlignment="center">></TextView>
+                        android:textAlignment="center"
+                        android:textColor="#ffffff">
+                    </TextView>
 
                     <TextView
                         android:id="@+id/textView333"
@@ -157,7 +181,9 @@
                         android:background="@drawable/cell_shape"
                         android:padding="5dp"
                         android:text="Бесплатно"
-                        android:textAlignment="center">></TextView>
+                        android:textAlignment="center"
+                        android:textColor="#ffffff">
+                    </TextView>
 
                     <TextView
                         android:id="@+id/textView444"
@@ -166,7 +192,9 @@
                         android:background="@drawable/cell_shape"
                         android:padding="5dp"
                         android:text=""
-                        android:textAlignment="center">></TextView>
+                        android:textAlignment="center"
+                        android:textColor="#ffffff">
+                    </TextView>
 
                 </TableRow>
 
@@ -179,10 +207,11 @@
                         android:id="@+id/textView1111"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-
                         android:padding="5dp"
                         android:text="до 17:00"
-                        android:textAlignment="center">></TextView>
+                        android:textAlignment="center"
+                        android:textColor="#ffffff">
+                    </TextView>
 
                     <TextView
                         android:id="@+id/textView2222"
@@ -191,7 +220,9 @@
                         android:background="@drawable/cell_shape"
                         android:padding="5dp"
                         android:text="20 мин"
-                        android:textAlignment="center">></TextView>
+                        android:textAlignment="center"
+                        android:textColor="#ffffff">
+                    </TextView>
 
                     <TextView
                         android:id="@+id/textView3333"
@@ -200,7 +231,9 @@
                         android:background="@drawable/cell_shape"
                         android:padding="5dp"
                         android:text="-"
-                        android:textAlignment="center">></TextView>
+                        android:textAlignment="center"
+                        android:textColor="#ffffff">
+                    </TextView>
 
                     <TextView
                         android:id="@+id/textView4444"
@@ -209,8 +242,11 @@
                         android:background="@drawable/cell_shape"
                         android:padding="5dp"
                         android:text=""
-                        android:textAlignment="center">></TextView>
+                        android:textAlignment="center"
+                        android:textColor="#ffffff">
+                    </TextView>
                 </TableRow>
+
                 <TableRow
                     android:id="@+id/tableRow5"
                     android:layout_width="match_parent"
@@ -221,7 +257,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="5dp"
-                        android:text=""></TextView>
+                        android:text="">
+                    </TextView>
 
                     <TextView
                         android:id="@+id/textView22222"
@@ -230,7 +267,9 @@
                         android:background="@drawable/cell_shape"
                         android:padding="5dp"
                         android:text="30 мин"
-                        android:textAlignment="center">></TextView>
+                        android:textAlignment="center"
+                        android:textColor="#ffffff">
+                    </TextView>
 
                     <TextView
                         android:id="@+id/textView33333"
@@ -239,7 +278,9 @@
                         android:background="@drawable/cell_shape"
                         android:padding="5dp"
                         android:text="-"
-                        android:textAlignment="center">></TextView>
+                        android:textAlignment="center"
+                        android:textColor="#ffffff">
+                    </TextView>
 
                     <TextView
                         android:id="@+id/textView44444"
@@ -248,7 +289,9 @@
                         android:background="@drawable/cell_shape"
                         android:padding="5dp"
                         android:text=""
-                        android:textAlignment="center">></TextView>
+                        android:textAlignment="center"
+                        android:textColor="#ffffff">
+                    </TextView>
                 </TableRow>
             </TableLayout>
 

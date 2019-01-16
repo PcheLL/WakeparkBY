@@ -2,7 +2,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff">
+    android:background="#000000">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -20,7 +20,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
             android:hint="Регистрация"
-            android:textColorHint="#010101"
+            android:textColorHint="#ffff00"
             android:textSize="35dp" />
 
         <TextView
@@ -31,7 +31,7 @@
             android:layout_alignLeft="@+id/editTextEmail"
             android:layout_marginTop="80dp"
             android:hint="Номер телефона:"
-            android:textColorHint="#010101"
+            android:textColorHint="#ffffff"
             android:textSize="18dp" />
 
         <EditText
@@ -41,21 +41,19 @@
             android:layout_below="@id/textViewEmail"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:layout_marginTop="-10dp"
             android:hint="+375(**)***-**-**"
             android:inputType="textEmailAddress"
-
+            android:background="#ffffff"
             />
 
         <TextView
             android:id="@+id/textViewName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:layout_below="@id/editTextEmail"
             android:layout_alignLeft="@+id/editTextName"
             android:hint="ФИО:"
-            android:textColorHint="#010101"
+            android:textColorHint="#ffffff"
             android:textSize="18dp"
 
             />
@@ -67,8 +65,8 @@
             android:layout_below="@id/textViewName"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:layout_marginTop="-10dp"
-            android:hint="Антошин Игорь Викторович" />
+            android:hint="Антошин Игорь Викторович"
+            android:background="#ffffff"/>
 
         <TextView
             android:id="@+id/textViewPassword"
@@ -77,7 +75,7 @@
             android:layout_below="@id/editTextName"
             android:layout_alignLeft="@+id/editTextPassword"
             android:hint="Пароль:"
-            android:textColorHint="#010101"
+            android:textColorHint="#ffffff"
             android:textSize="18dp"
 
             />
@@ -89,9 +87,9 @@
             android:layout_below="@id/textViewPassword"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:layout_marginTop="-10dp"
             android:hint="**********"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:background="#ffffff"/>
 
         <Button
             android:id="@+id/buttonSave"
@@ -102,8 +100,9 @@
             android:layout_centerVertical="true"
             android:layout_marginTop="20dp"
             android:hint="Готово"
-            android:textColorHint="#010101"
-            android:textSize="16dp" />
+            android:textColorHint="#ffffff"
+            android:textSize="16dp"
+            android:background="@drawable/button_welcome"/>
 
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

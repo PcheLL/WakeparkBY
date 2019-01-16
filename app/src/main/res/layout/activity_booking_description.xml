@@ -5,9 +5,9 @@
     android:background="#ffffff">
 
     <RelativeLayout
-
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#000000">
 
         <TextView
             android:id="@+id/textViewBookingDes"
@@ -15,11 +15,12 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
-            android:hint="Booking description"
-            android:textColorHint="#010101"
+            android:hint="Бронирование"
+            android:textColorHint="#ffff00"
             android:textSize="35dp" />
 
         <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/textViewBookingDes"
@@ -31,33 +32,81 @@
                 android:id="@+id/textViewInfoLocation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Location: "
-                android:textSize="18dp" />
+                android:text="Место: "
+                android:textSize="18dp"
+                android:textColor="#ffff00"/>
 
             <TextView
                 android:id="@+id/textViewInfoDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:hint="Date: "
-                android:textSize="18dp" />
+                android:text="Дата: "
+                android:textSize="18dp"
+                android:textColor="#ffff00"/>
 
             <TextView
                 android:id="@+id/textViewInfoTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:hint="Time: "
-                android:textSize="18dp" />
+                android:text="Время: "
+                android:textSize="18dp"
+                android:textColor="#ffff00"/>
 
             <TextView
                 android:id="@+id/textViewInfoPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:hint="Price: "
-                android:textSize="18dp" />
+                android:text="Цена: "
+                android:textSize="18dp"
+                android:textColor="#ffff00"/>
 
+        </LinearLayout>
+        <LinearLayout
+            android:layout_below="@+id/textViewBookingDes"
+            android:layout_toRightOf="@+id/linearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            >
+            <TextView
+                android:id="@+id/textViewInfoLocation1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ГСОК Логойск "
+                android:textSize="18dp"
+                android:textColor="#ffffff"/>
+
+            <TextView
+                android:id="@+id/textViewInfoDate1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="28 января 2018"
+                android:textSize="18dp"
+                android:textColor="#ffffff"/>
+
+            <TextView
+                android:id="@+id/textViewInfoTime1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="11.10 - 12.30"
+                android:textSize="18dp"
+                android:textColor="#ffffff"/>
+
+            <TextView
+                android:id="@+id/textViewInfoPrice1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="60 руб"
+                android:textSize="18dp"
+                android:textColor="#ffffff"/>
         </LinearLayout>
 
         <Button
@@ -68,9 +117,10 @@
             android:layout_alignParentBottom="true"
             android:layout_marginRight="30dp"
             android:layout_marginBottom="30dp"
-            android:hint="Забронировать"
-            android:textColorHint="#010101"
-            android:textSize="15dp" />
+            android:text="Забронировать"
+            android:textColor="#ffffff"
+            android:textSize="15dp"
+            android:background="@drawable/button_welcome"/>
         <Button
             android:id="@+id/buttonBackToMenu"
             android:layout_width="wrap_content"
@@ -79,10 +129,11 @@
             android:layout_alignParentBottom="true"
             android:layout_marginRight="30dp"
             android:layout_marginBottom="30dp"
-            android:hint="Главное меню"
-            android:textColorHint="#010101"
+            android:text="Главное меню"
+            android:textColor="#ffffff"
             android:textSize="15dp"
-            android:visibility="invisible"/>
+            android:visibility="invisible"
+            android:background="@drawable/button_welcome"/>
 
         <ImageView
             android:id="@+id/imageViewReserved"
