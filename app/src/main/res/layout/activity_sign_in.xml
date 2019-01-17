@@ -35,7 +35,6 @@
                 android:id="@+id/textViewNumberPhone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/editTextEmail"
                 android:hint="Номер телефона:"
                 android:textColorHint="#ffffff"
                 android:textSize="18dp" />
@@ -47,9 +46,11 @@
                 android:layout_below="@id/textViewNumberPhone"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                android:background="#ffffff"
                 android:hint="+375(**)***-**-**"
-                android:inputType="number" />
+                android:inputType="phone"
+                android:textColorHint="#A9A9A9"
+                android:backgroundTint="#ffff00"
+                android:textColor="#ffff00"/>
 
             <TextView
                 android:id="@+id/textViewPassword"
@@ -70,9 +71,11 @@
                 android:layout_below="@id/textViewPassword"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                android:background="#ffffff"
                 android:hint="**********"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:textColorHint="#A9A9A9"
+                android:backgroundTint="#ffff00"
+                android:textColor="#ffff00"/>
 
             <TextView
                 android:id="@+id/textViewNewPassword"

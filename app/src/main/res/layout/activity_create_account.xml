@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000000">
@@ -42,9 +43,10 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:hint="+375(**)***-**-**"
-            android:inputType="textEmailAddress"
-            android:background="#ffffff"
-            />
+            android:inputType="phone"
+            android:textColorHint="#A9A9A9"
+            android:backgroundTint="#ffff00"
+            android:textColor="#ffff00" />
 
         <TextView
             android:id="@+id/textViewName"
@@ -66,7 +68,9 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:hint="Антошин Игорь Викторович"
-            android:background="#ffffff"/>
+            android:textColorHint="#A9A9A9"
+            android:backgroundTint="#ffff00"
+            android:textColor="#ffff00"/>
 
         <TextView
             android:id="@+id/textViewPassword"
@@ -89,7 +93,9 @@
             android:layout_centerVertical="true"
             android:hint="**********"
             android:inputType="textPassword"
-            android:background="#ffffff"/>
+            android:textColorHint="#A9A9A9"
+            android:backgroundTint="#ffff00"
+            android:textColor="#ffff00"/>
 
         <Button
             android:id="@+id/buttonSave"
