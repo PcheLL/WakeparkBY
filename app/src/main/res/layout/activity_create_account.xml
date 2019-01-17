@@ -24,21 +24,21 @@
             android:textSize="35dp" />
 
         <TextView
-            android:id="@+id/textViewEmail"
+            android:id="@+id/textViewNumberPhoneCA"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/textViewCreateAccount"
-            android:layout_alignLeft="@+id/editTextEmail"
+            android:layout_alignLeft="@+id/editTextNumberPhoneCA"
             android:layout_marginTop="80dp"
             android:hint="Номер телефона:"
             android:textColorHint="#ffffff"
             android:textSize="18dp" />
 
         <EditText
-            android:id="@+id/editTextEmail"
+            android:id="@+id/editTextNumberPhoneCA"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textViewEmail"
+            android:layout_below="@id/textViewNumberPhoneCA"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:hint="+375(**)***-**-**"
@@ -50,7 +50,7 @@
             android:id="@+id/textViewName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/editTextEmail"
+            android:layout_below="@id/editTextNumberPhoneCA"
             android:layout_alignLeft="@+id/editTextName"
             android:hint="ФИО:"
             android:textColorHint="#ffffff"
