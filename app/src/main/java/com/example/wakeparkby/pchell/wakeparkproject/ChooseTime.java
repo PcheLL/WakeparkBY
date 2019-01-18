@@ -61,7 +61,7 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
         buttShort = (Button) findViewById(R.id.buttonShort);
         buttShort.setOnClickListener((View.OnClickListener) this);
         listViewTime = (ListView) findViewById(R.id.listViewTime);
-        chatListRefresh();
+        timeListRefresh();
 
         listViewTime.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -86,7 +86,7 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
         year = mYear;
     }
 
-    private void chatListRefresh() {
+    private void timeListRefresh() {
         //-----Отображение в базе данных сообщений
         myRefListTime.addValueEventListener(new ValueEventListener() {
             @Override
