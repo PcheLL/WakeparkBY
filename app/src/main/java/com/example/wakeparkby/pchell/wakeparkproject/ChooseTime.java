@@ -50,6 +50,7 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
     private static int hour2;
     private static int min2;
     private static ArrayList idList = new ArrayList();
+    private final List<String> timeList = new ArrayList<String>();
 
 
     @Override
@@ -62,6 +63,7 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
         buttShort.setOnClickListener((View.OnClickListener) this);
         listViewTime = (ListView) findViewById(R.id.listViewTime);
         timeListRefresh();
+        timeListRefresh1();
 
         listViewTime.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -74,6 +76,7 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
                     idList.add(id);
                     String timeAtPosition = (String) adapterView.getItemAtPosition(position);
                     myRefListProcReserv.child(day + "-" + month + "-" + year).push().setValue(timeAtPosition);
+                    timeListRefresh1();
                 }
             }
 
@@ -90,17 +93,10 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
         //-----Отображение в базе данных сообщений
         myRefListTime.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot chatDS) {
-                final List<String> timeList = new ArrayList<String>();
-                for (DataSnapshot battle : chatDS.getChildren())
+            public void onDataChange(@NonNull DataSnapshot timeDS) {
+                for (DataSnapshot battle : timeDS.getChildren())
                     timeList.add((String) battle.getValue());
-                ArrayAdapter<String> timeAdapter = new ArrayAdapter<>(ChooseTime.this,
-                        android.R.layout.simple_list_item_1,
-                        timeList.toArray(new String[timeList.size()]));
-                listViewTime.setAdapter(timeAdapter);
-                TimeListRefresh();
             }
-
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -108,45 +104,46 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
         });
     }
 
-    private void TimeListRefresh() {
+    private void timeListRefresh1() {
         myRefListProcReserv.child(day + "-" + month + "-" + year).addValueEventListener(new ValueEventListener() {
+            final List<String> ProcReservList = new ArrayList<String>();
+            final List<String> finalProcReservList = new ArrayList<String>();
+
             @Override
-            public void onDataChange(@NonNull DataSnapshot chatDS) {
-                final List<String> ProcReservList = new ArrayList<String>();
-                for (DataSnapshot battle : chatDS.getChildren())
+            public void onDataChange(@NonNull DataSnapshot procResDS) {
+                for (DataSnapshot battle : procResDS.getChildren())
                     ProcReservList.add((String) battle.getValue());
-                ArrayAdapter<String> ProcReservTimeAdapter = new ArrayAdapter<>(ChooseTime.this,
-                        android.R.layout.simple_list_item_1,
-                        ProcReservList.toArray(new String[ProcReservList.size()]));
-                ///////////////////////
-                for (int i = 0; i < listViewTime.getCount(); i++) {
-                    String et = String.valueOf(listViewTime.getItemAtPosition(i));
-                    System.out.print("");
+                int cl = ProcReservList.size();
+                for (int c = 0; c < timeList.size(); c++) {
+                    String et = timeList.get(c);
+                    int counter = 0;
                     for (int k = 0; k < ProcReservList.size(); k++) {
                         String p = ProcReservList.get(k);
-
                         if (et.equals(p)) {
-                            listViewTime.getChildAt(i).setBackgroundColor(Color.RED);
+                            finalProcReservList.add(et + "    ОЖИДАНИЕ БРОНИРОВАНИЯ");
+                            counter = 1;
+                        } else if (cl == k + 1) {
+                            if (counter == 0) {
+                                finalProcReservList.add(et);
+                            }
                         }
-                        //else {
-                         //   listViewTime.getChildAt(i).setBackgroundColor(Color.WHITE);
-                      //  }
                     }
                 }
-
-                //////////////////////
-                // listViewTime.setAdapter(timeAdapter);
-
-
+                ArrayAdapter<String> timeAdapter = new ArrayAdapter<>(ChooseTime.this,
+                        android.R.layout.simple_list_item_1,
+                        finalProcReservList.toArray(new String[finalProcReservList.size()]));
+                listViewTime.setAdapter(timeAdapter);
             }
 
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         });
-    }
 
+
+    }
 
     @Override
     public void onClick(View v) {
