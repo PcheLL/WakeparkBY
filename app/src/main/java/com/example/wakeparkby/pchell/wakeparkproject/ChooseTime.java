@@ -73,7 +73,7 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 if (idList.contains(id)) {
-                 /*   timeAtPosition = (String) adapterView.getItemAtPosition(position);
+                    timeAtPosition = (String) adapterView.getItemAtPosition(position);
                     myRefListProcReserv.child(infoLocationName).child(day + "-" + month + "-" + year).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot findTimeDS) {
@@ -94,7 +94,7 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
                         public void onCancelled(@NonNull DatabaseError databaseError) {
                         }
                     });
-                    timeListRefresh1();*/
+                    timeListRefresh1();
                 } else {
                     idList.add(id);
                     timeAtPosition = (String) adapterView.getItemAtPosition(position);
@@ -118,10 +118,6 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
             public void onDataChange(@NonNull DataSnapshot timeDS) {
                 for (DataSnapshot battle : timeDS.getChildren())
                     timeList.add((String) battle.getValue());
-                ArrayAdapter<String> timeAdapter = new ArrayAdapter<>(ChooseTime.this,
-                        android.R.layout.simple_list_item_1,
-                        timeList.toArray(new String[timeList.size()]));
-                listViewTime.setAdapter(timeAdapter);
             }
 
             @Override
@@ -140,9 +136,17 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
                 for (DataSnapshot battle : procResDS.getChildren())
                     ProcReservList.add((String) battle.getValue());
                 int cl = ProcReservList.size();
+                if (cl == 0) {
+                    ArrayAdapter<String> timeAdapter = new ArrayAdapter<>(ChooseTime.this,
+                            android.R.layout.simple_list_item_1,
+                            timeList.toArray(new String[timeList.size()]));
+                    listViewTime.setAdapter(timeAdapter);
+                }
+                else{
                 for (int c = 0; c < timeList.size(); c++) {
                     String et = timeList.get(c);
                     int counter = 0;
+
                     for (int k = 0; k < ProcReservList.size(); k++) {
                         String p = ProcReservList.get(k);
                         if (et.equals(p)) {
@@ -159,6 +163,7 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
                         android.R.layout.simple_list_item_1,
                         finalProcReservList.toArray(new String[finalProcReservList.size()]));
                 listViewTime.setAdapter(timeAdapter);
+                }
             }
 
 
