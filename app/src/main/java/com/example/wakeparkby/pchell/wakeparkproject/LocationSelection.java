@@ -25,16 +25,19 @@ public class LocationSelection extends AppCompatActivity implements View.OnClick
     @Override
     public void onClick(View v) {
         BookingDescription bookingDescription = new BookingDescription();
+        ChooseTime chooseTime = new ChooseTime();
         Intent intent_TheCalendar = new Intent(this, TheСalendar.class);
         switch (v.getId()) {
             case R.id.buttonDrozdy:
                 locationName = "Водохранилище Дрозды";
                 bookingDescription.infoLocation(locationName);
+                chooseTime.infoLocation(locationName);
                 startActivity(intent_TheCalendar);
                 break;
             case R.id.buttonLogoysk:
                 locationName = "ГСОК ЛОГОЙСК";
                 bookingDescription.infoLocation(locationName);
+                chooseTime.infoLocation(locationName);
                 startActivity(intent_TheCalendar);
                 break;
         }

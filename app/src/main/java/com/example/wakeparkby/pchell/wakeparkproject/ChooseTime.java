@@ -51,6 +51,9 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
     private static int min2;
     private static ArrayList idList = new ArrayList();
     private final List<String> timeList = new ArrayList<String>();
+    private static String infoLocationName = null;
+    private String timeAtPosition;
+
 
 
     @Override
@@ -70,16 +73,35 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 if (idList.contains(id)) {
-                    // view.setBackgroundColor(Color.WHITE);
+                 /*   timeAtPosition = (String) adapterView.getItemAtPosition(position);
+                    myRefListProcReserv.child(infoLocationName).child(day + "-" + month + "-" + year).addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot findTimeDS) {
+                            final List<String> findTimeList = new ArrayList<String>();
+                            for (DataSnapshot battle : findTimeDS.getChildren()) {
+                               String findValue = (String) battle.getValue();
+                                if (findValue == timeAtPosition) {
+                                    //-----Поиск значения в БД  и удаление его
+                                    String findValueKey = battle.getKey();
+                                    myRefListProcReserv = database.getReference(findValueKey);
+                                    myRefListProcReserv.removeValue();
+
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+                        }
+                    });
+                    timeListRefresh1();*/
                 } else {
-                    // view.setBackgroundColor(Color.RED);
                     idList.add(id);
-                    String timeAtPosition = (String) adapterView.getItemAtPosition(position);
-                    myRefListProcReserv.child(day + "-" + month + "-" + year).push().setValue(timeAtPosition);
+                    timeAtPosition = (String) adapterView.getItemAtPosition(position);
+                    myRefListProcReserv.child(infoLocationName).child(day + "-" + month + "-" + year).push().setValue(timeAtPosition);
                     timeListRefresh1();
                 }
             }
-
         });
     }
 
@@ -96,6 +118,10 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
             public void onDataChange(@NonNull DataSnapshot timeDS) {
                 for (DataSnapshot battle : timeDS.getChildren())
                     timeList.add((String) battle.getValue());
+                ArrayAdapter<String> timeAdapter = new ArrayAdapter<>(ChooseTime.this,
+                        android.R.layout.simple_list_item_1,
+                        timeList.toArray(new String[timeList.size()]));
+                listViewTime.setAdapter(timeAdapter);
             }
 
             @Override
@@ -181,5 +207,9 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
                 break;
 
         }
+    }
+
+    public void infoLocation(String locationName) {
+        infoLocationName = (locationName);
     }
 }
