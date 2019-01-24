@@ -7,7 +7,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#000000">
+        android:background="#000000"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/textViewChooseDate"
@@ -19,36 +20,41 @@
             android:textColorHint="#ffff00"
             android:textSize="35dp" />
 
-        <DatePicker
-            android:id="@+id/datePicker"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
             android:layout_below="@+id/textViewChooseDate"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_marginTop="10dp"
-            android:dayOfWeekBackground="@color/colorPrimary">
+            >
 
-            <RelativeLayout
+            <DatePicker
+                android:id="@+id/datePicker"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_below="@+id/textViewChooseDate"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:theme="@style/DayOfWeekPickerStyle"
+                style="@style/MyDatePickerStyle">
 
-                <Button
-                    android:id="@+id/buttonSelectDate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginRight="30dp"
-                    android:layout_marginBottom="30dp"
-                    android:text="Продолжить"
-                    android:textColor="#ffffff"
-                    android:textSize="15dp"
-                    android:background="@drawable/button_welcome"
-                    />
-            </RelativeLayout>
 
-        </DatePicker>
+            </DatePicker>
+
+            <Button
+                android:id="@+id/buttonSelectDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Продолжить"
+                android:textColor="#ffffff"
+                android:textSize="16dp"
+                android:layout_weight="0"
+                android:layout_gravity="right"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/button_welcome"
+                />
+        </LinearLayout>
+
 
     </RelativeLayout>
 

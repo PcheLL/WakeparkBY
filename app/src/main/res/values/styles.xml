@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
@@ -8,9 +8,17 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="datepicker" parent="Theme.AppCompat.Light.Dialog">
-        <item name="colorPrimary">#ffffff</item>
-        <item name="colorPrimaryDark">#000000</item>
-        <item name="colorAccent">#ffff00</item>
+    <style name="MyDatePickerStyle" parent="@android:style/Widget.Material.Light.DatePicker">
+        <item name="android:headerBackground">#000000</item>
+        <item name="android:calendarTextColor">#ffff00</item>
+        <item name="android:dayOfWeekBackground">#000000</item>
+        <item name="android:datePickerMode">calendar</item>
+        <item name="android:minDate">01/01/2019</item>
     </style>
+
+    <style name="DayOfWeekPickerStyle" parent="@android:style/Widget.Material.Light.DatePicker">
+        <item name="colorControlActivated">#ffffff</item>
+    </style>
+
+
 </resources>

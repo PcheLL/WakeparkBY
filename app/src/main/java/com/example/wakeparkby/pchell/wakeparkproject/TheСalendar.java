@@ -1,6 +1,8 @@
 package com.example.wakeparkby.pchell.wakeparkproject;
 
 import android.content.Intent;
+import android.content.res.Resources;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -22,6 +24,15 @@ public class TheСalendar extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_calendar);
         buttSelectDate = (Button) findViewById(R.id.buttonSelectDate);
         datePicker = (DatePicker) findViewById(R.id.datePicker);
+        /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            int headerId = Resources.getSystem().getIdentifier("day_picker_selector_layout", "id", "android");
+            //int bodyId = Resources.getSystem().getIdentifier("numberpicker_input", "id", "android");
+            final View header = datePicker.findViewById(headerId);
+            //final View day = datePicker.findViewById(bodyId);
+            header.setBackgroundColor(getResources().getColor(R.color.colorYelow));
+           // day.setBackgroundColor(getResources().getColor(R.color.colorYelow));
+            //final View body = datePicker.findViewById(id)
+        }*/
         int day = datePicker.getDayOfMonth();
         int month = datePicker.getMonth() + 1;
         int year = datePicker.getYear();

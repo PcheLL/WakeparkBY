@@ -51,9 +51,10 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
     private static int min2;
     private static ArrayList idList = new ArrayList();
     private final List<String> timeList = new ArrayList<String>();
-    private static String infoLocationName = null;
-    private String timeAtPosition;
-
+    private static String infoLocationName;
+    private static String timeAtPosition;
+    private static String deleteTimeAtPosition;
+    private static String infoDate;
 
 
     @Override
@@ -64,6 +65,8 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
         buttLong.setOnClickListener((View.OnClickListener) this);
         buttShort = (Button) findViewById(R.id.buttonShort);
         buttShort.setOnClickListener((View.OnClickListener) this);
+        buttSelectTime = (Button) findViewById(R.id.buttonSelectTime);
+        buttSelectTime.setOnClickListener((View.OnClickListener) this);
         listViewTime = (ListView) findViewById(R.id.listViewTime);
         timeListRefresh();
         timeListRefresh1();
@@ -74,18 +77,25 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 if (idList.contains(id)) {
                     timeAtPosition = (String) adapterView.getItemAtPosition(position);
-                    myRefListProcReserv.child(infoLocationName).child(day + "-" + month + "-" + year).addValueEventListener(new ValueEventListener() {
+                    for (int i = 0; i < timeAtPosition.length(); i++) {
+                        String b = String.valueOf(timeAtPosition.charAt(i));
+                        if (b.equals(" ")) {
+                            deleteTimeAtPosition = timeAtPosition.substring(0, i);
+                            break;
+                        }
+                    }
+                    myRefListProcReserv.child(infoLocationName).child(infoDate).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot findTimeDS) {
                             final List<String> findTimeList = new ArrayList<String>();
                             for (DataSnapshot battle : findTimeDS.getChildren()) {
-                               String findValue = (String) battle.getValue();
-                                if (findValue == timeAtPosition) {
+                                String findValue = (String) battle.getValue();
+                                if (findValue.equals(deleteTimeAtPosition)) {
                                     //-----Поиск значения в БД  и удаление его
                                     String findValueKey = battle.getKey();
-                                    myRefListProcReserv = database.getReference(findValueKey);
+                                    myRefListProcReserv = database.getReference("ProcessOfReservation/" + infoLocationName + "/" + infoDate + "/" + findValueKey);
                                     myRefListProcReserv.removeValue();
-
+                                    //timeListRefresh1(); //notifeDataSet... УСТРАНИТЬ
                                 }
                             }
                         }
@@ -94,11 +104,10 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
                         public void onCancelled(@NonNull DatabaseError databaseError) {
                         }
                     });
-                    timeListRefresh1();
                 } else {
                     idList.add(id);
                     timeAtPosition = (String) adapterView.getItemAtPosition(position);
-                    myRefListProcReserv.child(infoLocationName).child(day + "-" + month + "-" + year).push().setValue(timeAtPosition);
+                    myRefListProcReserv.child(infoLocationName).child(infoDate).push().setValue(timeAtPosition);
                     timeListRefresh1();
                 }
             }
@@ -109,6 +118,7 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
         day = mDay;
         month = mMonth;
         year = mYear;
+        infoDate = day + "-" + month + "-" + year;
     }
 
     private void timeListRefresh() {
@@ -127,7 +137,7 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
     }
 
     private void timeListRefresh1() {
-        myRefListProcReserv.child(day + "-" + month + "-" + year).addValueEventListener(new ValueEventListener() {
+        myRefListProcReserv.child(infoLocationName).child(infoDate).addValueEventListener(new ValueEventListener() {
             final List<String> ProcReservList = new ArrayList<String>();
             final List<String> finalProcReservList = new ArrayList<String>();
 
@@ -137,32 +147,32 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
                     ProcReservList.add((String) battle.getValue());
                 int cl = ProcReservList.size();
                 if (cl == 0) {
-                    ArrayAdapter<String> timeAdapter = new ArrayAdapter<>(ChooseTime.this,
+                    ArrayAdapter<String> timeAdapter1 = new ArrayAdapter<>(ChooseTime.this,
                             android.R.layout.simple_list_item_1,
                             timeList.toArray(new String[timeList.size()]));
-                    listViewTime.setAdapter(timeAdapter);
-                }
-                else{
-                for (int c = 0; c < timeList.size(); c++) {
-                    String et = timeList.get(c);
-                    int counter = 0;
+                    listViewTime.setAdapter(timeAdapter1);
+                } else {
+                    for (int c = 0; c < timeList.size(); c++) {
+                        String et = timeList.get(c);
+                        int counter = 0;
 
-                    for (int k = 0; k < ProcReservList.size(); k++) {
-                        String p = ProcReservList.get(k);
-                        if (et.equals(p)) {
-                            finalProcReservList.add(et + "    ОЖИДАНИЕ БРОНИРОВАНИЯ");
-                            counter = 1;
-                        } else if (cl == k + 1) {
-                            if (counter == 0) {
-                                finalProcReservList.add(et);
+                        for (int k = 0; k < ProcReservList.size(); k++) {
+                            String p = ProcReservList.get(k);
+                            if (et.equals(p)) {
+                                finalProcReservList.add(et + "    ОЖИДАНИЕ БРОНИРОВАНИЯ");
+                                counter = 1;
+                            } else if (cl == k + 1) {
+                                if (counter == 0) {
+                                    finalProcReservList.add(et);
+                                }
                             }
                         }
                     }
-                }
-                ArrayAdapter<String> timeAdapter = new ArrayAdapter<>(ChooseTime.this,
-                        android.R.layout.simple_list_item_1,
-                        finalProcReservList.toArray(new String[finalProcReservList.size()]));
-                listViewTime.setAdapter(timeAdapter);
+                    ArrayAdapter<String> timeAdapter2 = new ArrayAdapter<>(ChooseTime.this,
+                            android.R.layout.simple_list_item_1,
+                            finalProcReservList.toArray(new String[finalProcReservList.size()]));
+                    listViewTime.setAdapter(timeAdapter2);
+                    //listViewTime.deferNotifyDataSetChanged(); -- ОПТИМИЗИРОВАТЬ
                 }
             }
 
@@ -210,11 +220,15 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
                     textViewTime2.setText(hour2 + ":" + min2);
                 }
                 break;
+            case R.id.buttonEnter:
+
+                break;
 
         }
     }
 
     public void infoLocation(String locationName) {
+
         infoLocationName = (locationName);
     }
 }
