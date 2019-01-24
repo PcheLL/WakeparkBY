@@ -8,6 +8,10 @@ import android.widget.Button;
 
 public class MainMenu extends AppCompatActivity implements View.OnClickListener {
     private Button buttChoosePl;
+    private Button buttGiveSeasonTickets;
+    private Button buttPrice;
+    private Button buttTakeSeasonTickets;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,11 +19,34 @@ public class MainMenu extends AppCompatActivity implements View.OnClickListener 
         setContentView(R.layout.activity_main_menu);
         buttChoosePl = (Button) findViewById(R.id.buttonChoosePl);
         buttChoosePl.setOnClickListener((View.OnClickListener) this);
+        buttGiveSeasonTickets = (Button) findViewById(R.id.buttonGiveSeasonTickets);
+        buttGiveSeasonTickets.setOnClickListener((View.OnClickListener) this);
+        buttPrice = (Button) findViewById(R.id.buttonPrice);
+        buttPrice.setOnClickListener((View.OnClickListener) this);
+        buttTakeSeasonTickets = (Button) findViewById(R.id.buttonTakeSeasonTickets);
+        buttTakeSeasonTickets.setOnClickListener((View.OnClickListener) this);
     }
 
     @Override
     public void onClick(View v) {
         Intent intent_LocationSelection = new Intent(this, LocationSelection.class);
-        startActivity(intent_LocationSelection);
+        Intent intent_Give_Season_Tickets = new Intent(this, GiveSeasonTickets.class);
+        Intent intent_Take_Season_Tickets = new Intent(this, TakeSeasonTickets.class);
+        Intent intent_Price = new Intent(this, Price.class);
+
+        switch (v.getId()) {
+            case R.id.buttonChoosePl:
+                startActivity(intent_LocationSelection);
+                break;
+            case R.id.buttonGiveSeasonTickets:
+                startActivity(intent_Give_Season_Tickets);
+                break;
+            case R.id.buttonPrice:
+                startActivity(intent_Price);
+                break;
+            case R.id.buttonTakeSeasonTickets:
+                startActivity(intent_Take_Season_Tickets);
+                break;
+        }
     }
 }

@@ -8,7 +8,7 @@
         android:background="#000000">
 
         <TextView
-            android:id="@+id/textViewSeasonTickets"
+            android:id="@+id/textViewGiveSeasonTickets"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
@@ -20,38 +20,40 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textViewSeasonTickets"
+            android:layout_below="@id/textViewGiveSeasonTickets"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="40dp">
             <TextView
-                android:id="@+id/textViewNameST"
+                android:id="@+id/textViewNubmerPhoneGST"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/editTextNameST"
+                android:layout_alignLeft="@+id/editTextNubmerPhoneGST"
                 android:layout_marginTop="80dp"
-                android:hint="Имя клиента:"
+                android:hint="Номер телефона:"
                 android:textColorHint="#ffffff"
                 android:textSize="18dp" />
 
             <EditText
-                android:id="@+id/editTextNameST"
+                android:id="@+id/editTextNubmerPhoneGST"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/textViewNameST"
+                android:layout_below="@id/textViewNubmerPhoneGST"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                android:hint="Антошин Игорь Викторович"
+                android:hint="+375(**)***-**-**"
                 android:inputType="textEmailAddress"
-                android:background="#ffffff"
+                android:textColorHint="#A9A9A9"
+                android:backgroundTint="#ffff00"
+                android:textColor="#ffff00"
 
                 />
 
             <TextView
-                android:id="@+id/textViewTimeST"
+                android:id="@+id/textViewTimeGST"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/editTextNameST"
+                android:layout_below="@id/editTextNubmerPhoneGST"
                 android:layout_alignLeft="@+id/textViewNameST"
                 android:hint="Время (минут):"
                 android:textColorHint="#ffffff"
@@ -60,22 +62,24 @@
                 />
 
             <EditText
-                android:id="@+id/editTextTimeST"
+                android:id="@+id/editTextTimeGST"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/textViewTimeST"
+                android:layout_below="@id/textViewTimeGST"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                android:background="#ffffff"
-                android:hint="120" />
+                android:hint="120"
+                android:textColorHint="#A9A9A9"
+                android:backgroundTint="#ffff00"
+                android:textColor="#ffff00"/>
 
 
 
             <Button
-                android:id="@+id/buttonSaveST"
+                android:id="@+id/buttonSaveGST"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/editTextTimeST"
+                android:layout_below="@id/editTextTimeGST"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:layout_marginTop="20dp"

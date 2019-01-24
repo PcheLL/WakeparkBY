@@ -23,6 +23,9 @@
         <activity android:name=".TheСalendar"></activity>
         <activity android:name=".ChooseTime"></activity>
         <activity android:name=".BookingDescription"></activity>
+        <activity android:name=".GiveSeasonTickets"></activity>
+        <activity android:name=".Price"></activity>
+        <activity android:name=".TakeSeasonTickets"></activity>
     </application>
 
 </manifest>

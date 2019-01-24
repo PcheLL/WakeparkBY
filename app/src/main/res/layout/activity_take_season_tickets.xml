@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000000">
+
+        <TextView
+            android:id="@+id/textViewTakeSeasonTickets"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:hint="Списать абонемент"
+            android:textColorHint="#ffff00"
+            android:textSize="35dp" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textViewTakeSeasonTickets"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp">
+            <TextView
+                android:id="@+id/textViewNubmerPhoneTST"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/editTextNubmerPhoneTST"
+                android:layout_marginTop="80dp"
+                android:hint="Номер телефона:"
+                android:textColorHint="#ffffff"
+                android:textSize="18dp" />
+
+            <EditText
+                android:id="@+id/editTextNubmerPhoneTST"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewNubmerPhoneTST"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:hint="+375(**)***-**-**"
+                android:inputType="textEmailAddress"
+                android:textColorHint="#A9A9A9"
+                android:backgroundTint="#ffff00"
+                android:textColor="#ffff00"
+
+                />
+
+            <TextView
+                android:id="@+id/textViewTimeTST"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editTextNubmerPhoneTST"
+                android:layout_alignLeft="@+id/textViewNameST"
+                android:hint="Время (минут):"
+                android:textColorHint="#ffffff"
+                android:textSize="18dp"
+
+                />
+
+            <EditText
+                android:id="@+id/editTextTimeTST"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewTimeTST"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:hint="120"
+                android:textColorHint="#A9A9A9"
+                android:backgroundTint="#ffff00"
+                android:textColor="#ffff00"/>
+
+
+
+            <Button
+                android:id="@+id/buttonSaveTST"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editTextTimeTST"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="20dp"
+                android:hint="Cписать"
+                android:textColorHint="#ffffff"
+                android:textSize="16dp"
+                android:background="@drawable/button_welcome"/>
+        </RelativeLayout>
+
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>
