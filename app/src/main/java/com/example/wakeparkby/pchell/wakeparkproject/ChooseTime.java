@@ -1,23 +1,16 @@
 package com.example.wakeparkby.pchell.wakeparkproject;
 
-import android.annotation.TargetApi;
 import android.content.Intent;
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.ColorRes;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.TimePicker;
-import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -26,7 +19,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 
@@ -34,6 +26,7 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference myRefListTime = database.getReference("ListTime");
     private DatabaseReference myRefListProcReserv = database.getReference("ProcessOfReservation");
+    private DatabaseReference myRefReserved = database.getReference("RESERVED");
     private TimePicker timePicker;
     private TextView textViewData;
     private Button buttLong;
@@ -51,10 +44,16 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
     private static int min2;
     private static ArrayList idList = new ArrayList();
     private final List<String> timeList = new ArrayList<String>();
+    private final List<String> ProcReservList = new ArrayList<String>();
+    private final List<String> finalProcReservList = new ArrayList<String>();
+    private final List<String> reserverList = new ArrayList<String>();
+    private final List<String> visitorsReservList = new ArrayList<String>();
+    private final List<String> finalReserverList = new ArrayList<String>();
     private static String infoLocationName;
     private static String timeAtPosition;
     private static String deleteTimeAtPosition;
     private static String infoDate;
+    private String nameVisitors = "Катя";
 
 
     @Override
@@ -68,8 +67,8 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
         buttSelectTime = (Button) findViewById(R.id.buttonSelectTime);
         buttSelectTime.setOnClickListener((View.OnClickListener) this);
         listViewTime = (ListView) findViewById(R.id.listViewTime);
-        timeListRefresh();
         timeListRefresh1();
+        timeListRefresh2();
 
         listViewTime.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -93,9 +92,9 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
                                 if (findValue.equals(deleteTimeAtPosition)) {
                                     //-----Поиск значения в БД  и удаление его
                                     String findValueKey = battle.getKey();
-                                    myRefListProcReserv = database.getReference("ProcessOfReservation/" + infoLocationName + "/" + infoDate + "/" + findValueKey);
+                                    myRefListProcReserv = database.getReference("ProcessOfReservation/" + infoLocationName + "/" + infoDate + "/TIME/" + findValueKey);
                                     myRefListProcReserv.removeValue();
-                                    //timeListRefresh1(); //notifeDataSet... УСТРАНИТЬ
+                                    //timeListRefresh2(); //notifeDataSet... УСТРАНИТЬ
                                 }
                             }
                         }
@@ -107,8 +106,9 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
                 } else {
                     idList.add(id);
                     timeAtPosition = (String) adapterView.getItemAtPosition(position);
-                    myRefListProcReserv.child(infoLocationName).child(infoDate).push().setValue(timeAtPosition);
-                    timeListRefresh1();
+                    myRefListProcReserv.child(infoLocationName).child(infoDate).child("TIME").push().setValue(timeAtPosition);
+                    myRefListProcReserv.child(infoLocationName).child(infoDate).child(nameVisitors).push().setValue(timeAtPosition);
+                    timeListRefresh2();
                 }
             }
         });
@@ -121,7 +121,7 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
         infoDate = day + "-" + month + "-" + year;
     }
 
-    private void timeListRefresh() {
+    private void timeListRefresh1() {
         //-----Отображение в базе данных сообщений
         myRefListTime.addValueEventListener(new ValueEventListener() {
             @Override
@@ -129,28 +129,23 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
                 for (DataSnapshot battle : timeDS.getChildren())
                     timeList.add((String) battle.getValue());
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
     }
 
-    private void timeListRefresh1() {
-        myRefListProcReserv.child(infoLocationName).child(infoDate).addValueEventListener(new ValueEventListener() {
-            final List<String> ProcReservList = new ArrayList<String>();
-            final List<String> finalProcReservList = new ArrayList<String>();
+    private void timeListRefresh2() {
+        myRefListProcReserv.child(infoLocationName).child(infoDate).child("TIME").addValueEventListener(new ValueEventListener() {
+
 
             @Override
             public void onDataChange(@NonNull DataSnapshot procResDS) {
-                for (DataSnapshot battle : procResDS.getChildren())
-                    ProcReservList.add((String) battle.getValue());
+                for (DataSnapshot battle1 : procResDS.getChildren()){
+                        ProcReservList.add((String) battle1.getValue());}
                 int cl = ProcReservList.size();
                 if (cl == 0) {
-                    ArrayAdapter<String> timeAdapter1 = new ArrayAdapter<>(ChooseTime.this,
-                            android.R.layout.simple_list_item_1,
-                            timeList.toArray(new String[timeList.size()]));
-                    listViewTime.setAdapter(timeAdapter1);
+                    timeListRefresh3();
                 } else {
                     for (int c = 0; c < timeList.size(); c++) {
                         String et = timeList.get(c);
@@ -168,10 +163,8 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
                             }
                         }
                     }
-                    ArrayAdapter<String> timeAdapter2 = new ArrayAdapter<>(ChooseTime.this,
-                            android.R.layout.simple_list_item_1,
-                            finalProcReservList.toArray(new String[finalProcReservList.size()]));
-                    listViewTime.setAdapter(timeAdapter2);
+                    ProcReservList.clear();
+                    timeListRefresh3();
                     //listViewTime.deferNotifyDataSetChanged(); -- ОПТИМИЗИРОВАТЬ
                 }
             }
@@ -186,42 +179,106 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
 
     }
 
+    private void timeListRefresh3(){
+        myRefReserved.child(infoLocationName).child(infoDate).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot timeReservedDS) {
+                for (DataSnapshot timeReserved : timeReservedDS.getChildren())
+                    reserverList.add((String) timeReserved.getValue());
+                int cl1 = reserverList.size();
+                int cl2 = finalProcReservList.size();
+                if (cl2 == 0){
+                    if (cl1 == 0){
+                        ArrayAdapter<String> timeAdapter1 = new ArrayAdapter<>(ChooseTime.this,
+                                R.layout.text_view,
+                                timeList.toArray(new String[timeList.size()]));
+                        listViewTime.setAdapter(timeAdapter1);
+                    }
+                }
+                 if (cl2 != 0){
+                    if (cl1 != 0 ){
+                        for (int c = 0; c < finalProcReservList.size(); c++) {
+                            String et = finalProcReservList.get(c);
+                            int counter = 0;
+                            for (int k = 0; k < reserverList.size(); k++) {
+                                String p = reserverList.get(k);
+                                if (et.equals(p)) {
+                                    finalReserverList.add(et + " БРОНИРОВАНИЯ");
+                                    counter = 1;
+                                } else if (cl1 == k + 1) {
+                                    if (counter == 0) {
+                                        finalReserverList.add(et);
+                                    }
+                                }
+                            }
+                        }
+                        ArrayAdapter<String> timeAdapter2 = new ArrayAdapter<>(ChooseTime.this,
+                                R.layout.text_view,
+                                finalReserverList.toArray(new String[finalReserverList.size()]));
+                        listViewTime.setAdapter(timeAdapter2);
+                    }
+                    else {
+                        ArrayAdapter<String> timeAdapter3 = new ArrayAdapter<>(ChooseTime.this,
+                                R.layout.text_view,
+                                finalProcReservList.toArray(new String[finalProcReservList.size()]));
+                        listViewTime.setAdapter(timeAdapter3);
+                    }
+
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+    }
+
     @Override
     public void onClick(View v) {
-        // Intent intent_MyTasks = new Intent(this, MyTasks.class);
+         Intent intent_BookingDescription = new Intent(this, BookingDescription.class);
         switch (v.getId()) {
             case R.id.buttonLong:
-                int currentApiVersion1 = android.os.Build.VERSION.SDK_INT;
-                if (currentApiVersion1 > android.os.Build.VERSION_CODES.LOLLIPOP_MR1) {
-                    hour1 = timePicker.getHour();
-                    min1 = timePicker.getMinute();
-                } else {
-                    hour1 = timePicker.getCurrentHour();
-                    min1 = timePicker.getCurrentMinute();
-                }
-                if (min1 < 10) {
-                    textViewTime1.setText(hour1 + ":0" + min1);
-                } else {
-                    textViewTime1.setText(hour1 + ":" + min1);
-                }
                 break;
             case R.id.buttonShort:
-                int currentApiVersion2 = android.os.Build.VERSION.SDK_INT;
-                if (currentApiVersion2 > android.os.Build.VERSION_CODES.LOLLIPOP_MR1) {
-                    hour2 = timePicker.getHour();
-                    min2 = timePicker.getMinute();
-                } else {
-                    hour2 = timePicker.getCurrentHour();
-                    min2 = timePicker.getCurrentMinute();
-                }
-                if (min2 < 10) {
-                    textViewTime2.setText(hour2 + ":0" + min2);
-                } else {
-                    textViewTime2.setText(hour2 + ":" + min2);
-                }
                 break;
-            case R.id.buttonEnter:
+            case R.id.buttonSelectTime:
+                myRefListProcReserv.child(infoLocationName).child(infoDate).child(nameVisitors).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot visitorsDataSnapshot) {
+                        for (DataSnapshot battle : visitorsDataSnapshot.getChildren()) {
+                            visitorsReservList.add((String) battle.getValue());
+                            BookingDescription bookingDescription = new BookingDescription();
+                            bookingDescription.visitorsReserv(visitorsReservList);
+                        }
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
 
+                    }
+                });
+                myRefListProcReserv.child(infoLocationName).child(infoDate).child("TIME").addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot deleteTimeReservDS) {
+                        final List<String> deleteReservTimeList = new ArrayList<String>();
+                        for (DataSnapshot battle : deleteTimeReservDS.getChildren()) {
+                            String findValue = (String) battle.getValue();
+                            for (int i = 0; i<visitorsReservList.size();i++) {
+                                String deleteReservTime = visitorsReservList.get(i);
+                                if (findValue.equals(deleteReservTime)) {
+                                    //-----Поиск значения в БД  и удаление его
+                                    String findValueKey = battle.getKey();
+                                    myRefListProcReserv = database.getReference("ProcessOfReservation/" + infoLocationName + "/" + infoDate + "/TIME/" + findValueKey);
+                                    myRefListProcReserv.removeValue();
+                                    //timeListRefresh2(); //notifeDataSet... УСТРАНИТЬ
+                                }
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                    }
+                });
+                startActivity(intent_BookingDescription);
                 break;
 
         }

@@ -11,6 +11,9 @@ import android.widget.TextView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BookingDescription extends AppCompatActivity implements View.OnClickListener {
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference myRefReserved = database.getReference("RESERVED");
@@ -20,7 +23,7 @@ public class BookingDescription extends AppCompatActivity implements View.OnClic
     private TextView textViewPrice;
     private static String infoMounth = null;
     private static String infoLocationName = null;
-    private static String infoTime = null;
+    private static String infoTime = "-";
     private static String infoData = null;
     private static String infoPrice = null;
     private String m1 = null;
@@ -28,7 +31,8 @@ public class BookingDescription extends AppCompatActivity implements View.OnClic
     private Button buttBooking;
     private Button buttBackToMenu;
     private ImageView imageViewReserved;
-    private String name = "Pasha";
+    private String name = "Катя";
+    private static final List<String> visitorsReservList = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,50 +54,15 @@ public class BookingDescription extends AppCompatActivity implements View.OnClic
     }
 
     protected void infoLocation(String locationName) {
-        infoLocationName = ("Location: " + locationName);
+        infoLocationName = ("Место: " + locationName);
     }
 
     protected void infoDate(int mDay, int mMonth, int mYear) {
-        if (mMonth == 1) {
-            infoMounth = "Январь";
-        }
-        if (mMonth == 2) {
-            infoMounth = "Февраль";
-        }
-        if (mMonth == 3) {
-            infoMounth = "Март";
-        }
-        if (mMonth == 4) {
-            infoMounth = "Апрель";
-        }
-        if (mMonth == 5) {
-            infoMounth = "Май";
-        }
-        if (mMonth == 6) {
-            infoMounth = "Июнь";
-        }
-        if (mMonth == 7) {
-            infoMounth = "Июль";
-        }
-        if (mMonth == 8) {
-            infoMounth = "Август";
-        }
-        if (mMonth == 9) {
-            infoMounth = "Сентябрь";
-        }
-        if (mMonth == 10) {
-            infoMounth = "Октябрь";
-        }
-        if (mMonth == 11) {
-            infoMounth = "Ноябрь";
-        }
-        if (mMonth == 12) {
-            infoMounth = "Декабрь";
-        }
-        infoData = ("Date: " + mDay + " " + infoMounth + " " + mYear);
+
+        infoData = (mDay + "." + mMonth + "." + mYear);
     }
 
-    protected void infoTime(int hour1, int min1, int hour2, int min2) {
+    /*protected void infoTime(int hour1, int min1, int hour2, int min2) {
         if (min1 < 10) {
             m1 = ("0" + min1);
         } else {
@@ -104,8 +73,8 @@ public class BookingDescription extends AppCompatActivity implements View.OnClic
         } else {
             m2 = String.valueOf(min2);
         }
-        infoTime = ("Time: " + hour1 + "." + m1 + " - " + hour2 + "." + m2);
-    }
+        infoTime = ("Время: " + hour1 + "." + m1 + " - " + hour2 + "." + m2);
+    }*/
 
     protected void infoPrice() {
     }
@@ -118,12 +87,17 @@ public class BookingDescription extends AppCompatActivity implements View.OnClic
                 imageViewReserved.setVisibility(View.VISIBLE);
                 buttBooking.setVisibility(View.INVISIBLE);
                 buttBackToMenu.setVisibility(View.VISIBLE);
-                myRefReserved.child(infoLocationName).child(infoData).push().setValue(infoTime + " " +"Name: " + name);
+                myRefReserved.child(infoLocationName).child(infoData).child(name).push().setValue(visitorsReservList);
+
                 break;
             case R.id.buttonBackToMenu:
                 startActivity(intent_Main_menu);
                 break;
         }
 
+    }
+
+    public void visitorsReserv(List<String> visitorsReservList) {
+        visitorsReservList = visitorsReservList;
     }
 }
