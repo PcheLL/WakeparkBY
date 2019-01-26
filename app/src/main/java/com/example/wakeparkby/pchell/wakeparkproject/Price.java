@@ -237,7 +237,7 @@ public class Price extends AppCompatActivity implements View.OnClickListener {
         myRefPriceRent.child("PrimeTime").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot8) {
-                price = String.valueOf(dataSnapshot8.child("1hour").getValue();
+                price = String.valueOf(dataSnapshot8.child("1hour").getValue());
                 textView__32.setText(price);
                 price = String.valueOf(dataSnapshot8.child("2hour").getValue());
                 textView__33.setText(price);
