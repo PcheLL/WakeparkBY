@@ -31,6 +31,7 @@
             android:layout_marginTop="5dp">
 
             <Button
+                android:id="@+id/buttonСhildren"
                 android:layout_width="95dp"
                 android:layout_height="wrap_content"
                 android:text="Дети"
@@ -38,9 +39,19 @@
                 android:background="@drawable/button_welcome"
                 />
             <Button
+                android:id="@+id/buttonAdults"
                 android:layout_width="95dp"
                 android:layout_height="wrap_content"
                 android:text="Взрослые"
+                android:layout_marginLeft="5dp"
+                android:textColor="#ffffff"
+                android:background="@drawable/button_welcome"
+                />
+            <Button
+                android:id="@+id/buttonRent"
+                android:layout_width="95dp"
+                android:layout_height="wrap_content"
+                android:text="Аренда"
                 android:layout_marginLeft="5dp"
                 android:textColor="#ffffff"
                 android:background="@drawable/button_welcome"
@@ -49,13 +60,14 @@
 
 
         <LinearLayout
-            android:id="@+id/linearLayout2"
+            android:id="@+id/layoutСhildren"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/linearLayout"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
-            android:orientation="vertical">
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            android:visibility="invisible">
 
             <TableLayout
                 android:id="@+id/tabla_cuerpo"
@@ -135,11 +147,11 @@
                         android:id="@+id/textView21"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/upper_cell_shape"
                         android:padding="5dp"
                         android:text="Будние"
                         android:textAlignment="center"
-                        android:textColor="#ffffff"
-                        android:background="@drawable/upper_cell_shape">
+                        android:textColor="#ffffff">
                     </TextView>
 
                     <TextView
@@ -284,9 +296,9 @@
                         android:id="@+id/textView51"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/lower_cell_shape"
                         android:padding="5dp"
-                        android:text=""
-                        android:background="@drawable/lower_cell_shape">
+                        android:text="">
                     </TextView>
 
                     <TextView
@@ -322,53 +334,54 @@
                         android:textColor="#ffffff">
                     </TextView>
                 </TableRow>
+
                 <TableRow
-                android:id="@+id/tableRow6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                    android:id="@+id/tableRow6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/textView61"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:background="@drawable/upper_cell_shape"
-                    >
-                </TextView>
+                    <TextView
+                        android:id="@+id/textView61"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/upper_cell_shape"
+                        android:padding="5dp">
+                    </TextView>
 
-                <TextView
-                    android:id="@+id/textView62"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/cell_shape"
-                    android:padding="5dp"
-                    android:text="10 мин"
-                    android:textAlignment="center"
-                    android:textColor="#ffffff">
-                </TextView>
+                    <TextView
+                        android:id="@+id/textView62"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/cell_shape"
+                        android:padding="5dp"
+                        android:text="10 мин"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff">
+                    </TextView>
 
-                <TextView
-                    android:id="@+id/textView63"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/cell_shape"
-                    android:padding="5dp"
-                    android:text="10"
-                    android:textAlignment="center"
-                    android:textColor="#ffffff">
-                </TextView>
+                    <TextView
+                        android:id="@+id/textView63"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/cell_shape"
+                        android:padding="5dp"
+                        android:text="10"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff">
+                    </TextView>
 
-                <TextView
-                    android:id="@+id/textView64"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/cell_shape"
-                    android:padding="5dp"
-                    android:text="10"
-                    android:textAlignment="center"
-                    android:textColor="#ffffff">
-                </TextView>
-            </TableRow>
+                    <TextView
+                        android:id="@+id/textView64"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/cell_shape"
+                        android:padding="5dp"
+                        android:text="10"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff">
+                    </TextView>
+                </TableRow>
+
                 <TableRow
                     android:id="@+id/tableRow7"
                     android:layout_width="match_parent"
@@ -380,8 +393,7 @@
                         android:layout_height="wrap_content"
                         android:padding="5dp"
                         android:text="PRIME TIME"
-                        android:textColor="#ffffff"
-                        >
+                        android:textColor="#ffffff">
                     </TextView>
 
                     <TextView
@@ -417,6 +429,7 @@
                         android:textColor="#ffffff">
                     </TextView>
                 </TableRow>
+
                 <TableRow
                     android:id="@+id/tableRow8"
                     android:layout_width="match_parent"
@@ -429,8 +442,7 @@
                         android:padding="5dp"
                         android:text="(после 17:00)"
                         android:textColor="#ffffff"
-                        android:textSize="12dp"
-                        >
+                        android:textSize="12dp">
                     </TextView>
 
                     <TextView
@@ -466,6 +478,7 @@
                         android:textColor="#ffffff">
                     </TextView>
                 </TableRow>
+
                 <TableRow
                     android:id="@+id/tableRow9"
                     android:layout_width="match_parent"
@@ -476,8 +489,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="5dp"
-                        android:text=""
-                        >
+                        android:text="">
                     </TextView>
 
                     <TextView
@@ -512,6 +524,580 @@
                         android:textAlignment="center"
                         android:textColor="#ffffff">
                     </TextView>
+                </TableRow>
+
+            </TableLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutAdults"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linearLayout"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            android:visibility="invisible">
+
+            <TableLayout
+                android:id="@+id/tabla_cuerpo_1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/cell_shape"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:id="@+id/textView_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_span="6"
+                    android:gravity="center"
+                    android:text="Взрослые"
+                    android:textColor="#ffffff"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    android:typeface="serif">
+                </TextView>
+
+                <TableRow
+                    android:id="@+id/tableRow_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textView_11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/cell_shape"
+                        android:padding="5dp"
+                        android:text="">
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/textView_12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/cell_shape"
+                        android:padding="5dp"
+                        android:text="Сет"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff">
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/textView_13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/cell_shape"
+                        android:padding="5dp"
+                        android:text="Цены"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff">
+                    </TextView>
+
+
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textView_21"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="Будние"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff"
+                        android:background="@drawable/upper_cell_shape">
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/textView_22"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/cell_shape"
+                        android:padding="5dp"
+                        android:text="10 мин"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff">
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/textView_23"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/cell_shape"
+                        android:padding="5dp"
+                        android:text="10"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff">
+                    </TextView>
+
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textView_31"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="дни"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff">
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/textView_32"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/cell_shape"
+                        android:padding="5dp"
+                        android:text="15 мин"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff">
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/textView_33"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/cell_shape"
+                        android:padding="5dp"
+                        android:text="15"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff">
+                    </TextView>
+
+
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textView_41"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="до 17:00"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff">
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/textView_42"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/cell_shape"
+                        android:padding="5dp"
+                        android:text="20 мин"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff">
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/textView_43"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/cell_shape"
+                        android:padding="5dp"
+                        android:text="20"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff">
+                    </TextView>
+
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow_5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textView_51"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text=""
+                        android:background="@drawable/lower_cell_shape">
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/textView_52"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/cell_shape"
+                        android:padding="5dp"
+                        android:text="30 мин"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff">
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/textView_53"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/cell_shape"
+                        android:padding="5dp"
+                        android:text="30"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff">
+                    </TextView>
+
+
+                </TableRow>
+                <TableRow
+                    android:id="@+id/tableRow_6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textView_61"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:background="@drawable/upper_cell_shape"
+                        >
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/textView_62"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/cell_shape"
+                        android:padding="5dp"
+                        android:text="10 мин"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff">
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/textView_63"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/cell_shape"
+                        android:padding="5dp"
+                        android:text="15"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff">
+                    </TextView>
+
+
+                </TableRow>
+                <TableRow
+                    android:id="@+id/tableRow_7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textView_71"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="PRIME TIME"
+                        android:textColor="#ffffff"
+                        >
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/textView_72"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/cell_shape"
+                        android:padding="5dp"
+                        android:text="15 мин"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff">
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/textView_73"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/cell_shape"
+                        android:padding="5dp"
+                        android:text="20"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff">
+                    </TextView>
+
+
+                </TableRow>
+                <TableRow
+                    android:id="@+id/tableRow_8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textView_81"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="(после 17:00)"
+                        android:textColor="#ffffff"
+                        android:textSize="12dp"
+                        >
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/textView_82"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/cell_shape"
+                        android:padding="5dp"
+                        android:text="20 мин"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff">
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/textView_83"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/cell_shape"
+                        android:padding="5dp"
+                        android:text="25"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff">
+                    </TextView>
+
+
+                </TableRow>
+                <TableRow
+                    android:id="@+id/tableRow_9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textView_91"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text=""
+                        >
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/textView_92"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/cell_shape"
+                        android:padding="5dp"
+                        android:text="30 мин"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff">
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/textView_93"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/cell_shape"
+                        android:padding="5dp"
+                        android:text="35"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff">
+                    </TextView>
+
+
+                </TableRow>
+
+            </TableLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutRent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linearLayout"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            android:visibility="invisible">
+
+            <TableLayout
+                android:id="@+id/tabla_cuerpo_2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/cell_shape"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:id="@+id/textView_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_span="6"
+                    android:gravity="center"
+                    android:text="Канатная дорога"
+                    android:textColor="#ffffff"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    android:typeface="serif">
+                </TextView>
+
+                <TableRow
+                    android:id="@+id/tableRow22"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textView__11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/cell_shape"
+                        android:padding="5dp"
+                        android:text="">
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/textView__12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/cell_shape"
+                        android:padding="5dp"
+                        android:text="1 час"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff">
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/textView__13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/cell_shape"
+                        android:padding="5dp"
+                        android:text="2 часа"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff">
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/textView__14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/cell_shape"
+                        android:padding="5dp"
+                        android:text="3 часа"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff">
+                    </TextView>
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow__2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textView__21"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/cell_shape"
+                        android:padding="5dp"
+                        android:text="до 17-00"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff">
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/textView__22"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/cell_shape"
+                        android:padding="5dp"
+                        android:text="50"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff">
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/textView__23"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/cell_shape"
+                        android:padding="5dp"
+                        android:text="90"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff">
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/textView__24"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/cell_shape"
+                        android:padding="5dp"
+                        android:text="130"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff">
+                    </TextView>
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow__3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textView__31"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="После"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff"
+                        android:background="@drawable/cell_shape">
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/textView__32"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/cell_shape"
+                        android:padding="5dp"
+                        android:text="65"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff">
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/textView__33"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/cell_shape"
+                        android:padding="5dp"
+                        android:text="110"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff">
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/textView__34"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/cell_shape"
+                        android:padding="5dp"
+                        android:text="150"
+                        android:textAlignment="center"
+                        android:textColor="#ffffff">
+                    </TextView>
+
                 </TableRow>
 
             </TableLayout>
