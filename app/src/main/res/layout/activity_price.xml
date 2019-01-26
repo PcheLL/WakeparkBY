@@ -40,7 +40,7 @@
                 />
             <Button
                 android:id="@+id/buttonAdults"
-                android:layout_width="95dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Взрослые"
                 android:layout_marginLeft="5dp"
