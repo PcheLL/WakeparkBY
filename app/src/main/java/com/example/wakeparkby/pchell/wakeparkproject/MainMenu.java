@@ -11,6 +11,7 @@ public class MainMenu extends AppCompatActivity implements View.OnClickListener 
     private Button buttGiveSeasonTickets;
     private Button buttPrice;
     private Button buttTakeSeasonTickets;
+    private Button buttChangePrice;
 
 
     @Override
@@ -25,6 +26,8 @@ public class MainMenu extends AppCompatActivity implements View.OnClickListener 
         buttPrice.setOnClickListener((View.OnClickListener) this);
         buttTakeSeasonTickets = (Button) findViewById(R.id.buttonTakeSeasonTickets);
         buttTakeSeasonTickets.setOnClickListener((View.OnClickListener) this);
+        buttChangePrice = (Button) findViewById(R.id.buttonChangePrice);
+        buttChangePrice.setOnClickListener((View.OnClickListener) this);
     }
 
     @Override
@@ -33,6 +36,7 @@ public class MainMenu extends AppCompatActivity implements View.OnClickListener 
         Intent intent_Give_Season_Tickets = new Intent(this, GiveSeasonTickets.class);
         Intent intent_Take_Season_Tickets = new Intent(this, TakeSeasonTickets.class);
         Intent intent_Price = new Intent(this, Price.class);
+        Intent intent_Change_Price = new Intent(this, ChangePrices.class);
 
         switch (v.getId()) {
             case R.id.buttonChoosePl:
@@ -46,6 +50,9 @@ public class MainMenu extends AppCompatActivity implements View.OnClickListener 
                 break;
             case R.id.buttonTakeSeasonTickets:
                 startActivity(intent_Take_Season_Tickets);
+                break;
+            case R.id.buttonChangePrice:
+                startActivity(intent_Change_Price);
                 break;
         }
     }

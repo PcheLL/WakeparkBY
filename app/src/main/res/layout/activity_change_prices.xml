@@ -1,0 +1,825 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000000">
+
+        <TextView
+            android:id="@+id/textViewNewPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:hint="Изменение цен"
+            android:textColorHint="#ffff00"
+            android:textSize="35dp" />
+
+        <LinearLayout
+            android:id="@+id/linearLayoutNewPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewNewPrice"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/buttonNewPriceСhildren"
+                android:layout_width="95dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_welcome"
+                android:text="Дети"
+                android:textColor="#ffffff" />
+
+            <Button
+                android:id="@+id/buttonNewPriceAdults"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/button_welcome"
+                android:text="Взрослые"
+                android:textColor="#ffffff" />
+
+            <Button
+                android:id="@+id/buttonNewPriceRent"
+                android:layout_width="95dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/button_welcome"
+                android:text="Аренда"
+                android:textColor="#ffffff" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutCTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linearLayoutNewPrice"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+        <Button
+            android:id="@+id/buttonCNotPrimeTime"
+            android:layout_width="95dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_welcome"
+            android:text="До 17-00"
+            android:textColor="#ffffff" />
+
+        <Button
+            android:id="@+id/buttonCNewPrimeTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/button_welcome"
+            android:text="Prime time"
+            android:textColor="#ffffff" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutATime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linearLayoutNewPrice"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <Button
+                android:id="@+id/buttonANotPrimeTime"
+                android:layout_width="95dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_welcome"
+                android:text="До 17-00"
+                android:textColor="#ffffff" />
+
+            <Button
+                android:id="@+id/buttonANewPrimeTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/button_welcome"
+                android:text="Prime time"
+                android:textColor="#ffffff" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutRTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linearLayoutNewPrice"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <Button
+                android:id="@+id/buttonRNotPrimeTime"
+                android:layout_width="95dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_welcome"
+                android:text="До 17-00"
+                android:textColor="#ffffff" />
+
+            <Button
+                android:id="@+id/buttonRNewPrimeTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/button_welcome"
+                android:text="Prime time"
+                android:textColor="#ffffff" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutNPChildren"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linearLayoutCTime"
+            android:orientation="vertical"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:visibility="gone">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Будние дни до 17-00"
+                android:textColor="#ffffff"
+                android:layout_gravity="center"
+                />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10мин: "
+                    android:textColor="#ffffff"
+                    />
+                <EditText
+                    android:id="@+id/editTextC1_11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="до 9 лет"
+                    android:textColorHint="#A9A9A9"
+                    android:backgroundTint="#ffff00"
+                    android:textColor="#ffff00"/>
+                <EditText
+                    android:id="@+id/editTextC1_12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="до 16 лет"
+                    android:textColorHint="#A9A9A9"
+                    android:backgroundTint="#ffff00"
+                    android:textColor="#ffff00"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="15мин: "
+                    android:textColor="#ffffff"
+                    />
+                <EditText
+                    android:id="@+id/editTextC1_21"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="до 9 лет"
+                    android:textColorHint="#A9A9A9"
+                    android:backgroundTint="#ffff00"
+                    android:textColor="#ffff00"/>
+                <EditText
+                    android:id="@+id/editTextC1_22"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="до 16 лет"
+                    android:textColorHint="#A9A9A9"
+                    android:backgroundTint="#ffff00"
+                    android:textColor="#ffff00"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="20мин: "
+                    android:textColor="#ffffff"
+                    />
+                <EditText
+                    android:id="@+id/editTextC1_31"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="до 9 лет"
+                    android:textColorHint="#A9A9A9"
+                    android:backgroundTint="#ffff00"
+                    android:textColor="#ffff00"/>
+                <EditText
+                    android:id="@+id/editTextC1_32"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="до 16 лет"
+                    android:textColorHint="#A9A9A9"
+                    android:backgroundTint="#ffff00"
+                    android:textColor="#ffff00"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="30мин: "
+                    android:textColor="#ffffff"
+                    />
+                <EditText
+                    android:id="@+id/editTextC1_41"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="до 9 лет"
+                    android:textColorHint="#A9A9A9"
+                    android:backgroundTint="#ffff00"
+                    android:textColor="#ffff00"/>
+                <EditText
+                    android:id="@+id/editTextC1_42"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="до 16 лет"
+                    android:textColorHint="#A9A9A9"
+                    android:backgroundTint="#ffff00"
+                    android:textColor="#ffff00"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutNPChildrenPT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linearLayoutCTime"
+            android:orientation="vertical"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:visibility="gone">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PRIME TIME"
+                android:textColor="#ffffff"
+                android:layout_gravity="center"
+                />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10мин: "
+                    android:textColor="#ffffff"
+                    />
+                <EditText
+                    android:id="@+id/editTextC2_11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="до 9 лет"
+                    android:textColorHint="#A9A9A9"
+                    android:backgroundTint="#ffff00"
+                    android:textColor="#ffff00"/>
+                <EditText
+                    android:id="@+id/editTextC2_12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="до 16 лет"
+                    android:textColorHint="#A9A9A9"
+                    android:backgroundTint="#ffff00"
+                    android:textColor="#ffff00"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="15мин: "
+                    android:textColor="#ffffff"
+                    />
+                <EditText
+                    android:id="@+id/editTextC2_21"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="до 9 лет"
+                    android:textColorHint="#A9A9A9"
+                    android:backgroundTint="#ffff00"
+                    android:textColor="#ffff00"/>
+                <EditText
+                    android:id="@+id/editTextC2_22"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="до 16 лет"
+                    android:textColorHint="#A9A9A9"
+                    android:backgroundTint="#ffff00"
+                    android:textColor="#ffff00"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="20мин: "
+                    android:textColor="#ffffff"
+                    />
+                <EditText
+                    android:id="@+id/editTextC2_31"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="до 9 лет"
+                    android:textColorHint="#A9A9A9"
+                    android:backgroundTint="#ffff00"
+                    android:textColor="#ffff00"/>
+                <EditText
+                    android:id="@+id/editTextC2_32"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="до 16 лет"
+                    android:textColorHint="#A9A9A9"
+                    android:backgroundTint="#ffff00"
+                    android:textColor="#ffff00"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="30мин: "
+                    android:textColor="#ffffff"
+                    />
+                <EditText
+                    android:id="@+id/editTextC2_41"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="до 9 лет"
+                    android:textColorHint="#A9A9A9"
+                    android:backgroundTint="#ffff00"
+                    android:textColor="#ffff00"/>
+                <EditText
+                    android:id="@+id/editTextC2_42"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="до 16 лет"
+                    android:textColorHint="#A9A9A9"
+                    android:backgroundTint="#ffff00"
+                    android:textColor="#ffff00"/>
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+
+
+
+        <LinearLayout
+            android:id="@+id/linearLayoutNPAdults"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linearLayoutATime"
+            android:orientation="vertical"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:visibility="gone">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Будние дни до 17-00"
+                android:textColor="#ffffff"
+                android:layout_gravity="center"
+                />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10мин: "
+                    android:textColor="#ffffff"
+                    />
+                <EditText
+                    android:id="@+id/editTextA1_11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="взрослые"
+                    android:textColorHint="#A9A9A9"
+                    android:backgroundTint="#ffff00"
+                    android:textColor="#ffff00"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="15мин: "
+                    android:textColor="#ffffff"
+                    />
+                <EditText
+                    android:id="@+id/editTextA1_21"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="взрослые"
+                    android:textColorHint="#A9A9A9"
+                    android:backgroundTint="#ffff00"
+                    android:textColor="#ffff00"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="20мин: "
+                    android:textColor="#ffffff"
+                    />
+                <EditText
+                    android:id="@+id/editTextA1_31"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="взрослые"
+                    android:textColorHint="#A9A9A9"
+                    android:backgroundTint="#ffff00"
+                    android:textColor="#ffff00"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="30мин: "
+                    android:textColor="#ffffff"
+                    />
+                <EditText
+                    android:id="@+id/editTextA1_41"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="взрослые"
+                    android:textColorHint="#A9A9A9"
+                    android:backgroundTint="#ffff00"
+                    android:textColor="#ffff00"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutNPAdultsPT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linearLayoutATime"
+            android:orientation="vertical"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:visibility="gone">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PRIME TIME"
+                android:textColor="#ffffff"
+                android:layout_gravity="center"
+                />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10мин: "
+                    android:textColor="#ffffff"
+                    />
+                <EditText
+                    android:id="@+id/editTextA2_11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="взрослые"
+                    android:textColorHint="#A9A9A9"
+                    android:backgroundTint="#ffff00"
+                    android:textColor="#ffff00"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="15мин: "
+                    android:textColor="#ffffff"
+                    />
+                <EditText
+                    android:id="@+id/editTextA2_21"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="взрослые"
+                    android:textColorHint="#A9A9A9"
+                    android:backgroundTint="#ffff00"
+                    android:textColor="#ffff00"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="20мин: "
+                    android:textColor="#ffffff"
+                    />
+                <EditText
+                    android:id="@+id/editTextA2_31"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="взрослые"
+                    android:textColorHint="#A9A9A9"
+                    android:backgroundTint="#ffff00"
+                    android:textColor="#ffff00"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="30мин: "
+                    android:textColor="#ffffff"
+                    />
+                <EditText
+                    android:id="@+id/editTextA2_41"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="взрослые"
+                    android:textColorHint="#A9A9A9"
+                    android:backgroundTint="#ffff00"
+                    android:textColor="#ffff00"/>
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+
+        <LinearLayout
+            android:id="@+id/linearLayoutNPRental"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linearLayoutRTime"
+            android:orientation="vertical"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:visibility="gone">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Будние дни до 17-00"
+                android:textColor="#ffffff"
+                android:layout_gravity="center"
+                />
+                <LinearLayout
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1час:   "
+                        android:textColor="#ffffff"
+                        />
+                    <EditText
+                        android:id="@+id/editTextR1_11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="цена"
+                        android:textColorHint="#A9A9A9"
+                        android:backgroundTint="#ffff00"
+                        android:textColor="#ffff00"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2часа: "
+                        android:textColor="#ffffff"
+                        />
+                    <EditText
+                        android:id="@+id/editTextR1_21"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="цена"
+                        android:textColorHint="#A9A9A9"
+                        android:backgroundTint="#ffff00"
+                        android:textColor="#ffff00"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_gravity="center"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="3часа: "
+                        android:textColor="#ffffff"
+                        />
+                    <EditText
+                        android:id="@+id/editTextR1_31"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="цена"
+                        android:textColorHint="#A9A9A9"
+                        android:backgroundTint="#ffff00"
+                        android:textColor="#ffff00"/>
+                </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/linearLayoutNPRentalPT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linearLayoutRTime"
+            android:orientation="vertical"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:visibility="gone">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PRIME TIME"
+                android:textColor="#ffffff"
+                android:layout_gravity="center"
+                />
+            <LinearLayout
+                android:layout_gravity="center"
+
+                android:id="@+id/ll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1час:   "
+                    android:textColor="#ffffff"
+                    />
+                <EditText
+                    android:id="@+id/editTextR2_11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="цена"
+                    android:textColorHint="#A9A9A9"
+                    android:backgroundTint="#ffff00"
+                    android:textColor="#ffff00"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2часа: "
+                    android:textColor="#ffffff"
+                    />
+                <EditText
+                    android:id="@+id/editTextR2_21"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="цена"
+                    android:textColorHint="#A9A9A9"
+                    android:backgroundTint="#ffff00"
+                    android:textColor="#ffff00"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_gravity="center"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3часа: "
+                    android:textColor="#ffffff"
+                    />
+                <EditText
+                    android:id="@+id/editTextR2_31"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="цена"
+                    android:textColorHint="#A9A9A9"
+                    android:backgroundTint="#ffff00"
+                    android:textColor="#ffff00"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/buttonEnterNewPriceChildren"
+            android:visibility="gone"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Добавить"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_welcome"
+            android:layout_below="@+id/linearLayoutNPChildren"/>
+        <Button
+            android:id="@+id/buttonEnterNewPriceChildrenPT"
+            android:visibility="gone"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Добавить"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_welcome"
+            android:layout_below="@+id/linearLayoutNPChildrenPT"/>
+        <Button
+            android:id="@+id/buttonEnterNewPriceAdults"
+            android:visibility="gone"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Добавить"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_welcome"
+            android:layout_below="@+id/linearLayoutNPAdults"/>
+        <Button
+            android:id="@+id/buttonEnterNewPriceAdultsPT"
+            android:visibility="gone"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Добавить"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_welcome"
+            android:layout_below="@+id/linearLayoutNPAdultsPT"/>
+        <Button
+            android:id="@+id/buttonEnterNewPriceRent"
+            android:visibility="gone"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Добавить"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_welcome"
+            android:layout_below="@+id/linearLayoutNPRental"/>
+        <Button
+            android:id="@+id/buttonEnterNewPriceRentPT"
+            android:visibility="gone"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Добавить"
+            android:textColor="#ffffff"
+            android:background="@drawable/button_welcome"
+            android:layout_below="@+id/linearLayoutNPRentalPT"/>
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>
