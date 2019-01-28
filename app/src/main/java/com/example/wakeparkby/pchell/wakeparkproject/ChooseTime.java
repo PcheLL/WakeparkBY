@@ -50,6 +50,7 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
     private final List<String> reserverList = new ArrayList<String>();
     private final List<String> visitorsReservList = new ArrayList<String>();
     private final List<String> finalReserverList = new ArrayList<String>();
+    private final List<String> finalReserverList2 = new ArrayList<String>();
     private static String infoLocationName;
     private static String timeAtPosition;
     private static String deleteTimeAtPosition;
@@ -238,19 +239,24 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
                              for (int k = 0; k < cl1; k++) {
                                  String p = reserverList.get(k);
                                  if (et.equals(p)) {
-                                     finalReserverList.add(et + "    ЗАБРОНИРОВАНО");
+                                     finalReserverList2.add(et + "    ЗАБРОНИРОВАНО");
                                      counter = 1;
                                  } else if (cl1 == k + 1) {
                                      if (counter == 0) {
-                                         finalReserverList.add(et);
+                                         finalReserverList2.add(et);
                                      }
                                  }
                              }
                          }
                          ArrayAdapter<String> timeAdapter4 = new ArrayAdapter<>(ChooseTime.this,
                                  R.layout.text_view,
-                                 finalReserverList.toArray(new String[finalReserverList.size()]));
+                                 finalReserverList2.toArray(new String[finalReserverList2.size()]));
                          listViewTime.setAdapter(timeAdapter4);
+                         finalProcReservList.clear();
+                         reserverList.clear();
+                         ProcReservList.clear();
+                         finalReserverList2.clear();
+
                      }
                  }
             }
