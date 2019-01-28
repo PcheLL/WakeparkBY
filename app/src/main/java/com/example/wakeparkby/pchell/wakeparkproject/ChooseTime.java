@@ -56,6 +56,7 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
     private static String deleteTimeAtPosition;
     private static String infoDate;
     private String nameVisitors = "Катя";
+    private String findValue;
 
 
     @Override
@@ -88,9 +89,8 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
                     myRefListProcReserv.child(infoLocationName).child(infoDate).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot findTimeDS) {
-                            final List<String> findTimeList = new ArrayList<String>();
                             for (DataSnapshot battle : findTimeDS.getChildren()) {
-                                String findValue = (String) battle.getValue();
+                                findValue = (String) battle.getValue();
                                 if (findValue.equals(deleteTimeAtPosition)) {
                                     //-----Поиск значения в БД  и удаление его
                                     String findValueKey = battle.getKey();
@@ -219,7 +219,7 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
                                 finalReserverList.toArray(new String[finalReserverList.size()]));
                         listViewTime.setAdapter(timeAdapter2);
                     }
-                    else {
+                   /* else {
                         ArrayAdapter<String> timeAdapter3 = new ArrayAdapter<>(ChooseTime.this,
                                 R.layout.text_view,
                                 finalProcReservList.toArray(new String[finalProcReservList.size()]));
@@ -228,7 +228,7 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
                         if (reserverList != null) {
                             reserverList.clear();
                         }
-                    }
+                    }*/
 
                 }
                 else {
@@ -256,7 +256,16 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
                          reserverList.clear();
                          ProcReservList.clear();
                          finalReserverList2.clear();
-
+                     }
+                     else{
+                         ArrayAdapter<String> timeAdapter5 = new ArrayAdapter<>(ChooseTime.this,
+                                 R.layout.text_view,
+                                 finalProcReservList.toArray(new String[finalProcReservList.size()]));
+                         listViewTime.setAdapter(timeAdapter5);
+                         finalProcReservList.clear();
+                         reserverList.clear();
+                         ProcReservList.clear();
+                         finalReserverList2.clear();
                      }
                  }
             }
@@ -268,6 +277,7 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
 
     @Override
     public void onClick(View v) {
+        Intent intent_BookingDescription = new Intent(this, BookingDescription.class);
         switch (v.getId()) {
             case R.id.buttonLong:
                 break;
@@ -282,7 +292,7 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
                             visitorsReservList.add((String) battle.getValue());
                         BookingDescription bookingDescription = new BookingDescription();
                         bookingDescription.visitorsReserv(visitorsReservList);
-                        addReserver2();
+
                         // }
                     }
                     @Override
@@ -290,45 +300,20 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
 
                     }
                 });
-
+                startActivity(intent_BookingDescription);
                 break;
 
         }
     }
 
-    private void addReserver2() {
-        final Intent intent_BookingDescription = new Intent(this, BookingDescription.class);
-        myRefListProcReserv.child(infoLocationName).child(infoDate).child("TIME").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot deleteTimeReservDS) {
-                final List<String> deleteReservTimeList = new ArrayList<String>();
-                for (DataSnapshot battle : deleteTimeReservDS.getChildren()) {
-                    String findValue = (String) battle.getValue();
-                    for (int i = 0; i<visitorsReservList.size();i++) {
-                        String deleteReservTime = visitorsReservList.get(i);
-                        if (findValue.equals(deleteReservTime)) {
-                            //-----Поиск значения в БД  и удаление его
-                            String findValueKey = battle.getKey();
-                            myRefListProcReserv = database.getReference("ProcessOfReservation/" + infoLocationName + "/" + infoDate + "/TIME/" + findValueKey);
-                            myRefListProcReserv.removeValue();
 
-
-                            //timeListRefresh2(); //notifeDataSet... УСТРАНИТЬ
-                        }
-                    }
-                }
-                startActivity(intent_BookingDescription);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-            }
-        });
-
-    }
 
     public void infoLocation(String locationName) {
 
         infoLocationName = (locationName);
+    }
+
+    public void clearIdList() {
+        idList.clear();
     }
 }
