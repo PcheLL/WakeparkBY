@@ -32,18 +32,19 @@ public class BookingDescription extends AppCompatActivity implements View.OnClic
     private Button buttBackToMenu;
     private ImageView imageViewReserved;
     private String name = "Катя";
-    private static final List<String> visitorsReservList = new ArrayList<String>();
+    private String reservedTime;
+    private static List<String> visitorsList = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_booking_description);
         textViewLocation = (TextView) findViewById(R.id.textViewInfoLocation);
-        textViewLocation.setText(infoLocationName);
+        textViewLocation.setText("Место: "+infoLocationName);
         textViewDate = (TextView) findViewById(R.id.textViewInfoDate);
-        textViewDate.setText(infoData);
+        textViewDate.setText("Дата: "+infoData);
         textViewTime = (TextView) findViewById(R.id.textViewInfoTime);
-        textViewTime.setText(infoTime);
+        textViewTime.setText("Время: "+infoTime);
         textViewPrice = (TextView) findViewById(R.id.textViewInfoPrice);
         textViewPrice.setText(infoPrice);
         buttBooking = (Button) findViewById(R.id.buttonBooking);
@@ -54,12 +55,12 @@ public class BookingDescription extends AppCompatActivity implements View.OnClic
     }
 
     protected void infoLocation(String locationName) {
-        infoLocationName = ("Место: " + locationName);
+        infoLocationName = (locationName);
     }
 
     protected void infoDate(int mDay, int mMonth, int mYear) {
 
-        infoData = (mDay + "." + mMonth + "." + mYear);
+        infoData = (mDay + "-" + mMonth + "-" + mYear);
     }
 
     /*protected void infoTime(int hour1, int min1, int hour2, int min2) {
@@ -84,11 +85,10 @@ public class BookingDescription extends AppCompatActivity implements View.OnClic
         Intent intent_Main_menu = new Intent(this, MainMenu.class);
         switch (v.getId()) {
             case R.id.buttonBooking:
+                booking();
                 imageViewReserved.setVisibility(View.VISIBLE);
                 buttBooking.setVisibility(View.INVISIBLE);
                 buttBackToMenu.setVisibility(View.VISIBLE);
-                myRefReserved.child(infoLocationName).child(infoData).child(name).push().setValue(visitorsReservList);
-
                 break;
             case R.id.buttonBackToMenu:
                 startActivity(intent_Main_menu);
@@ -97,7 +97,18 @@ public class BookingDescription extends AppCompatActivity implements View.OnClic
 
     }
 
+    private void booking() {
+        for (int i = 0; i<visitorsList.size();i++)
+        {
+            reservedTime = visitorsList.get(i);
+            myRefReserved.child(infoLocationName).child(infoData).child(name).push().setValue(reservedTime);
+            myRefReserved.child(infoLocationName).child(infoData).child("TIME").push().setValue(reservedTime);
+
+        }
+    }
+
     public void visitorsReserv(List<String> visitorsReservList) {
-        visitorsReservList = visitorsReservList;
+        visitorsList = visitorsReservList;
+        System.out.print("");
     }
 }

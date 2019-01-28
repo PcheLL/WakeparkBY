@@ -77,7 +77,6 @@
                 android:id="@+id/textViewInfoLocation1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ГСОК Логойск "
                 android:textSize="18dp"
                 android:textColor="#ffffff"/>
 
@@ -86,7 +85,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="28 января 2018"
                 android:textSize="18dp"
                 android:textColor="#ffffff"/>
 
@@ -95,7 +93,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="11.10 - 12.30"
                 android:textSize="18dp"
                 android:textColor="#ffffff"/>
 
@@ -104,7 +101,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="60 руб"
                 android:textSize="18dp"
                 android:textColor="#ffffff"/>
         </LinearLayout>

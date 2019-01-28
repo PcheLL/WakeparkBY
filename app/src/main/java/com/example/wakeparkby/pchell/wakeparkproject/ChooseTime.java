@@ -26,6 +26,7 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference myRefListTime = database.getReference("ListTime");
     private DatabaseReference myRefListProcReserv = database.getReference("ProcessOfReservation");
+    private DatabaseReference myRefListProcReserv2 = database.getReference("ProcessOfReservation");
     private DatabaseReference myRefReserved = database.getReference("RESERVED");
     private TimePicker timePicker;
     private TextView textViewData;
@@ -136,7 +137,7 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
     }
 
     private void timeListRefresh2() {
-        myRefListProcReserv.child(infoLocationName).child(infoDate).child("TIME").addValueEventListener(new ValueEventListener() {
+        myRefListProcReserv.child(infoLocationName).child(infoDate).child("TIME").addListenerForSingleValueEvent(new ValueEventListener() {
 
 
             @Override
@@ -180,11 +181,11 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
     }
 
     private void timeListRefresh3(){
-        myRefReserved.child(infoLocationName).child(infoDate).addValueEventListener(new ValueEventListener() {
+        myRefReserved.child(infoLocationName).child(infoDate).child("TIME").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot timeReservedDS) {
-                for (DataSnapshot timeReserved : timeReservedDS.getChildren())
-                    reserverList.add((String) timeReserved.getValue());
+                for (DataSnapshot timeReserved : timeReservedDS.getChildren()){
+                    reserverList.add((String) timeReserved.getValue());}
                 int cl1 = reserverList.size();
                 int cl2 = finalProcReservList.size();
                 if (cl2 == 0){
@@ -195,15 +196,15 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
                         listViewTime.setAdapter(timeAdapter1);
                     }
                 }
-                 if (cl2 != 0){
+                 if (cl2 == 0){
                     if (cl1 != 0 ){
-                        for (int c = 0; c < finalProcReservList.size(); c++) {
-                            String et = finalProcReservList.get(c);
+                        for (int c = 0; c < timeList.size(); c++) {
+                            String et = timeList.get(c);
                             int counter = 0;
-                            for (int k = 0; k < reserverList.size(); k++) {
+                            for (int k = 0; k < cl1; k++) {
                                 String p = reserverList.get(k);
                                 if (et.equals(p)) {
-                                    finalReserverList.add(et + " БРОНИРОВАНИЯ");
+                                    finalReserverList.add(et + "    ЗАБРОНИРОВАНО");
                                     counter = 1;
                                 } else if (cl1 == k + 1) {
                                     if (counter == 0) {
@@ -222,9 +223,36 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
                                 R.layout.text_view,
                                 finalProcReservList.toArray(new String[finalProcReservList.size()]));
                         listViewTime.setAdapter(timeAdapter3);
+                       // finalProcReservList.clear();
+                        if (reserverList != null) {
+                            reserverList.clear();
+                        }
                     }
 
                 }
+                else {
+                     if (cl1 != 0 ){
+                         for (int c = 0; c < finalProcReservList.size(); c++) {
+                             String et = finalProcReservList.get(c);
+                             int counter = 0;
+                             for (int k = 0; k < cl1; k++) {
+                                 String p = reserverList.get(k);
+                                 if (et.equals(p)) {
+                                     finalReserverList.add(et + "    ЗАБРОНИРОВАНО");
+                                     counter = 1;
+                                 } else if (cl1 == k + 1) {
+                                     if (counter == 0) {
+                                         finalReserverList.add(et);
+                                     }
+                                 }
+                             }
+                         }
+                         ArrayAdapter<String> timeAdapter4 = new ArrayAdapter<>(ChooseTime.this,
+                                 R.layout.text_view,
+                                 finalReserverList.toArray(new String[finalReserverList.size()]));
+                         listViewTime.setAdapter(timeAdapter4);
+                     }
+                 }
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -234,54 +262,63 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
 
     @Override
     public void onClick(View v) {
-         Intent intent_BookingDescription = new Intent(this, BookingDescription.class);
         switch (v.getId()) {
             case R.id.buttonLong:
                 break;
             case R.id.buttonShort:
                 break;
             case R.id.buttonSelectTime:
-                myRefListProcReserv.child(infoLocationName).child(infoDate).child(nameVisitors).addListenerForSingleValueEvent(new ValueEventListener() {
+                myRefListProcReserv2.child(infoLocationName).child(infoDate).child(nameVisitors).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot visitorsDataSnapshot) {
-                        for (DataSnapshot battle : visitorsDataSnapshot.getChildren()) {
+                        // visitorsReservList = (List<String>) visitorsDataSnapshot.getValue();
+                        for (DataSnapshot battle : visitorsDataSnapshot.getChildren())
                             visitorsReservList.add((String) battle.getValue());
-                            BookingDescription bookingDescription = new BookingDescription();
-                            bookingDescription.visitorsReserv(visitorsReservList);
-                        }
+                        BookingDescription bookingDescription = new BookingDescription();
+                        bookingDescription.visitorsReserv(visitorsReservList);
+                        addReserver2();
+                        // }
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
 
                     }
                 });
-                myRefListProcReserv.child(infoLocationName).child(infoDate).child("TIME").addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot deleteTimeReservDS) {
-                        final List<String> deleteReservTimeList = new ArrayList<String>();
-                        for (DataSnapshot battle : deleteTimeReservDS.getChildren()) {
-                            String findValue = (String) battle.getValue();
-                            for (int i = 0; i<visitorsReservList.size();i++) {
-                                String deleteReservTime = visitorsReservList.get(i);
-                                if (findValue.equals(deleteReservTime)) {
-                                    //-----Поиск значения в БД  и удаление его
-                                    String findValueKey = battle.getKey();
-                                    myRefListProcReserv = database.getReference("ProcessOfReservation/" + infoLocationName + "/" + infoDate + "/TIME/" + findValueKey);
-                                    myRefListProcReserv.removeValue();
-                                    //timeListRefresh2(); //notifeDataSet... УСТРАНИТЬ
-                                }
-                            }
-                        }
-                    }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-                    }
-                });
-                startActivity(intent_BookingDescription);
                 break;
 
         }
+    }
+
+    private void addReserver2() {
+        final Intent intent_BookingDescription = new Intent(this, BookingDescription.class);
+        myRefListProcReserv.child(infoLocationName).child(infoDate).child("TIME").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot deleteTimeReservDS) {
+                final List<String> deleteReservTimeList = new ArrayList<String>();
+                for (DataSnapshot battle : deleteTimeReservDS.getChildren()) {
+                    String findValue = (String) battle.getValue();
+                    for (int i = 0; i<visitorsReservList.size();i++) {
+                        String deleteReservTime = visitorsReservList.get(i);
+                        if (findValue.equals(deleteReservTime)) {
+                            //-----Поиск значения в БД  и удаление его
+                            String findValueKey = battle.getKey();
+                            myRefListProcReserv = database.getReference("ProcessOfReservation/" + infoLocationName + "/" + infoDate + "/TIME/" + findValueKey);
+                            myRefListProcReserv.removeValue();
+
+
+                            //timeListRefresh2(); //notifeDataSet... УСТРАНИТЬ
+                        }
+                    }
+                }
+                startActivity(intent_BookingDescription);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+
     }
 
     public void infoLocation(String locationName) {
