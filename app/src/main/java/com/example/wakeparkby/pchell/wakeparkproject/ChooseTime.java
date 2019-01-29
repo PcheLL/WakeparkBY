@@ -194,6 +194,7 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
                         ArrayAdapter<String> timeAdapter1 = new ArrayAdapter<>(ChooseTime.this,
                                 R.layout.text_view,
                                 timeList.toArray(new String[timeList.size()]));
+                        listViewTime.setAdapter(null);
                         listViewTime.setAdapter(timeAdapter1);
                     }
                 }
@@ -217,7 +218,12 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
                         ArrayAdapter<String> timeAdapter2 = new ArrayAdapter<>(ChooseTime.this,
                                 R.layout.text_view,
                                 finalReserverList.toArray(new String[finalReserverList.size()]));
+                        listViewTime.setAdapter(null);
                         listViewTime.setAdapter(timeAdapter2);
+                        finalProcReservList.clear();
+                        reserverList.clear();
+                        ProcReservList.clear();
+                        finalReserverList2.clear();
                     }
                    /* else {
                         ArrayAdapter<String> timeAdapter3 = new ArrayAdapter<>(ChooseTime.this,
@@ -251,6 +257,7 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
                          ArrayAdapter<String> timeAdapter4 = new ArrayAdapter<>(ChooseTime.this,
                                  R.layout.text_view,
                                  finalReserverList2.toArray(new String[finalReserverList2.size()]));
+                         listViewTime.setAdapter(null);
                          listViewTime.setAdapter(timeAdapter4);
                          finalProcReservList.clear();
                          reserverList.clear();
@@ -261,6 +268,7 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
                          ArrayAdapter<String> timeAdapter5 = new ArrayAdapter<>(ChooseTime.this,
                                  R.layout.text_view,
                                  finalProcReservList.toArray(new String[finalProcReservList.size()]));
+                         listViewTime.setAdapter(null);
                          listViewTime.setAdapter(timeAdapter5);
                          finalProcReservList.clear();
                          reserverList.clear();
