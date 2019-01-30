@@ -35,7 +35,7 @@ public class TheСalendar extends AppCompatActivity implements View.OnClickListe
         Calendar cal=Calendar.getInstance();
         long now = System.currentTimeMillis() - 1000;
         datePicker.setMinDate(now);
-        datePicker.setMaxDate(now+(1000*60*60*24*6));
+        datePicker.setMaxDate(now+(1000*60*60*24*13));
     }
 
 

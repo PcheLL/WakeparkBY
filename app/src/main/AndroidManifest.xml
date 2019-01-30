@@ -27,6 +27,8 @@
         <activity android:name=".Price"></activity>
         <activity android:name=".TakeSeasonTickets"></activity>
         <activity android:name=".ChangePrices"></activity>
+        <activity android:name=".MySeasonTickets"></activity>
+        <activity android:name=".History"></activity>
     </application>
 
 </manifest>

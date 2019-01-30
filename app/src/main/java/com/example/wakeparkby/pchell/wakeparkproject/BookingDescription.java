@@ -21,6 +21,7 @@ import java.util.List;
 public class BookingDescription extends AppCompatActivity implements View.OnClickListener {
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference myRefReserved = database.getReference("RESERVED");
+    private DatabaseReference myRefHistory = database.getReference("HISTORY");
     private DatabaseReference myRefListProcReserv = database.getReference("ProcessOfReservation");
     private DatabaseReference myRefListProcReserv2 = database.getReference("ProcessOfReservation");
     private TextView textViewLocation;
@@ -37,7 +38,7 @@ public class BookingDescription extends AppCompatActivity implements View.OnClic
     private Button buttBooking;
     private Button buttBackToMenu;
     private ImageView imageViewReserved;
-    private String name = "Катя";
+    private String name = "+375295274820(Катя)";
     private String reservedTime;
     private static List<String> visitorsList = new ArrayList<String>();
 
@@ -128,6 +129,7 @@ public class BookingDescription extends AppCompatActivity implements View.OnClic
             reservedTime = visitorsList.get(i);
             myRefReserved.child(infoLocationName).child(infoData).child(name).push().setValue(reservedTime);
             myRefReserved.child(infoLocationName).child(infoData).child("TIME").push().setValue(reservedTime);
+            myRefHistory.child(name).child(infoLocationName).child(infoData).push().setValue(reservedTime);
         }
         ChooseTime chooseTime = new ChooseTime();
         chooseTime.clearIdList();
@@ -171,4 +173,6 @@ public class BookingDescription extends AppCompatActivity implements View.OnClic
         });
 
     }
+
+
 }

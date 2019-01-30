@@ -135,17 +135,19 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
         Intent intent_Take_Season_Tickets = new Intent(this, TakeSeasonTickets.class);
         Intent intent_Price = new Intent(this, Price.class);
         Intent intent_Change_Price = new Intent(this, ChangePrices.class);
-        // Handle navigation view item clicks here.
+        Intent intent_My_Season_Tickets = new Intent(this, MySeasonTickets.class);
+        Intent intent_History = new Intent(this, History.class);
         int id = item.getItemId();
 
          if (id == R.id.nav_ChoosePl) {
             startActivity(intent_LocationSelection);
         } else if (id == R.id.nav_MySeasonTickets) {
-
+             startActivity(intent_My_Season_Tickets);
         } else if (id == R.id.nav_Price) {
             startActivity(intent_Price);
 
         } else if (id == R.id.nav_History) {
+             startActivity(intent_History);
 
         } else if (id == R.id.nav_Mark) {
 

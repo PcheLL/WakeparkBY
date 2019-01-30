@@ -55,7 +55,7 @@ public class ChooseTime extends AppCompatActivity implements View.OnClickListene
     private static String timeAtPosition;
     private static String deleteTimeAtPosition;
     private static String infoDate;
-    private String nameVisitors = "Катя";
+    private String nameVisitors = "+375295274820(Катя)";
     private String findValue;
 
 
